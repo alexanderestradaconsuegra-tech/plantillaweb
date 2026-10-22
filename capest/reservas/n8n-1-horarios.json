@@ -1,0 +1,140 @@
+{
+  "name": "CAPEST - Horarios disponibles",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "capest-slots",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "id": "064926e1-937e-4610-8bf5-ec8aa27be699",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "8e940b6e-aa5e-4d73-93b1-86b2b4629b3a"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Extrae el body (n8n v2: no usar $json.body en el nodo Postgres)\nconst b = $input.first().json.body || {};\nconst slug = String(b.slug || 'capest').replace(/[^a-z0-9-]/gi, '').slice(0, 60);\nconst okFecha = /^\\d{4}-\\d{2}-\\d{2}$/.test(b.desde || '');\nconst dias = Math.min(Math.max(parseInt(b.dias, 10) || 14, 1), 60);\nreturn [{ json: { slug, desde: okFecha ? b.desde : '', dias } }];"
+      },
+      "id": "7e493c3f-00da-4b6c-af66-d57f0ddff6ca",
+      "name": "Preparar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM fn_slots($1, NULLIF($2, '')::date, $3::int)",
+        "options": {
+          "queryReplacement": "={{ [$json.slug, $json.desde, $json.dias] }}"
+        }
+      },
+      "id": "90b477ec-e567-4654-bf9f-f4cf12ddfc87",
+      "name": "Horarios disponibles",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        480,
+        0
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "REEMPLAZAR_ID_CREDENCIAL",
+          "name": "CAPEST DB"
+        }
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "// Agrupa las filas por fecha: [{ fecha, bloques: [{ id, etiqueta, desde, hasta, cupos }] }]\nconst dias = {};\nfor (const it of $input.all()) {\n  const r = it.json;\n  if (!r.fecha) continue;\n  (dias[r.fecha] = dias[r.fecha] || []).push({ id: r.bloque_id, etiqueta: r.etiqueta, desde: r.hora_desde, hasta: r.hora_hasta, cupos: r.cupos });\n}\nconst data = Object.keys(dias).sort().map(fecha => ({ fecha, bloques: dias[fecha] }));\nreturn [{ json: { respuesta: { ok: true, data } } }];"
+      },
+      "id": "8b2d4c42-48b0-4f63-b467-c7f722c9a17f",
+      "name": "Agrupar por día",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        720,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json.respuesta) }}",
+        "options": {}
+      },
+      "id": "23d9a79b-ca29-46c0-9d14-bc2b92eab622",
+      "name": "Responder",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        960,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Preparar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Preparar": {
+      "main": [
+        [
+          {
+            "node": "Horarios disponibles",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Horarios disponibles": {
+      "main": [
+        [
+          {
+            "node": "Agrupar por día",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Agrupar por día": {
+      "main": [
+        [
+          {
+            "node": "Responder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

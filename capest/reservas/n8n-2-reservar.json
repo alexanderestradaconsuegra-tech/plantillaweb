@@ -1,0 +1,290 @@
+{
+  "name": "CAPEST - Reservar visita",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "capest-reservar",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "id": "93669734-a2fb-4a50-ba1c-049c512b0688",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "8966b4c5-4cd7-4e1f-81a2-d18dabb76610"
+    },
+    {
+      "parameters": {
+        "jsCode": "const b = $input.first().json.body || {};\nconst clean = (v, max) => String(v == null ? '' : v).replace(/[<>]/g, '').trim().slice(0, max);\nconst slug = clean(b.slug || 'capest', 60).replace(/[^a-z0-9-]/gi, '');\n// Anti-spam: campo trampa lleno o formulario enviado en menos de 3 segundos\nconst spam = !!clean(b.hp, 50) || (Number(b.elapsedMs) || 0) < 3000;\nconst payload = {\n  name: clean(b.name, 120), phone: clean(b.phone, 25), email: clean(b.email, 120),\n  propertyType: clean(b.propertyType, 20), pestType: clean(b.pestType, 60),\n  commune: clean(b.commune, 80), address: clean(b.address, 200),\n  serviceFrequency: clean(b.serviceFrequency, 20), message: clean(b.message, 600),\n  date: clean(b.date, 10), block: clean(b.block, 30), source: 'website'\n};\nreturn [{ json: { slug, spam, payload: JSON.stringify(payload) } }];"
+      },
+      "id": "7b7ba02f-6171-4a00-8de0-1d2ee522c174",
+      "name": "Validar y limpiar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "0e8e3c15-3eef-4393-abde-9b7b0149f318",
+              "leftValue": "={{ $json.spam }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "9fd61b6f-21ec-4add-b18b-436795db0876",
+      "name": "¿Es spam?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        480,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: false, error: 'solicitud_invalida' }) }}",
+        "options": {}
+      },
+      "id": "281258ab-7253-46f1-ae6d-63a6dbf35563",
+      "name": "Responder spam",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        720,
+        -140
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT fn_crear_reserva($1, $2::jsonb) AS r",
+        "options": {
+          "queryReplacement": "={{ [$json.slug, $json.payload] }}"
+        }
+      },
+      "id": "226cc5aa-7423-4c6c-b720-fa13546958c2",
+      "name": "Crear reserva",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        720,
+        60
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "REEMPLAZAR_ID_CREDENCIAL",
+          "name": "CAPEST DB"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const r = $input.first().json.r || { ok: false, error: 'error_interno' };\nlet aviso = '';\nif (r.ok) {\n  const d = r.data;\n  aviso = [\n    'Nueva solicitud de visita ' + d.codigo,\n    d.fecha + ' · ' + d.etiqueta + ' (' + d.hora_desde + ' a ' + d.hora_hasta + ')',\n    'Cliente: ' + d.nombre + ' · ' + d.telefono,\n    'Dirección: ' + d.direccion + ', ' + d.comuna,\n    'Plaga: ' + d.plaga,\n    'Confirmar en el panel o por WhatsApp.'\n  ].join('\\n');\n}\nreturn [{ json: { respuesta: r, ok: !!r.ok, aviso } }];"
+      },
+      "id": "d14ae48e-7092-4005-a161-44b036216a30",
+      "name": "Armar respuesta",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        960,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json.respuesta) }}",
+        "options": {}
+      },
+      "id": "bdc889c0-522c-44e4-9009-4404efe3dfae",
+      "name": "Responder",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1200,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "c747427e-3819-48db-8a0f-46c76718e74b",
+              "leftValue": "={{ $json.ok }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "e7b504cc-11bb-49a8-a324-8459d03c6cf1",
+      "name": "¿Reserva creada?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1440,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://REEMPLAZAR-EVOLUTION-URL/message/sendText/REEMPLAZAR-INSTANCIA",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "REEMPLAZAR_APIKEY_EVOLUTION"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ number: '56968317150', text: $json.aviso }) }}",
+        "options": {}
+      },
+      "id": "7f3ae289-2f74-4959-9f94-28a25db0336d",
+      "name": "Avisar a CAPEST por WhatsApp",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1680,
+        0
+      ],
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Validar y limpiar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validar y limpiar": {
+      "main": [
+        [
+          {
+            "node": "¿Es spam?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Es spam?": {
+      "main": [
+        [
+          {
+            "node": "Responder spam",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Crear reserva",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Crear reserva": {
+      "main": [
+        [
+          {
+            "node": "Armar respuesta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Armar respuesta": {
+      "main": [
+        [
+          {
+            "node": "Responder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Responder": {
+      "main": [
+        [
+          {
+            "node": "¿Reserva creada?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Reserva creada?": {
+      "main": [
+        [
+          {
+            "node": "Avisar a CAPEST por WhatsApp",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

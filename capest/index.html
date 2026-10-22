@@ -306,6 +306,49 @@ html.lenis,html.lenis body{height:auto}
 .info .pending{background:transparent;border-color:#9CC3D6;color:#CFE0EA}
 .info a{text-decoration:none;font-weight:700}
 
+/* Reserva de visitas */
+.bk-title{font-size:1.35rem;margin-bottom:6px}
+.bk-demo{background:#FFF8E1;border:1px solid #E7C66A;color:#5B4300;border-radius:12px;padding:10px 14px;font-size:.92rem;margin:8px 0}
+.stepper{list-style:none;margin:18px 0 22px;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stepper li{display:flex;align-items:center;gap:8px;font:700 .85rem/1.2 var(--font-title);color:var(--muted);padding-top:12px;border-top:4px solid var(--line)}
+.stepper li b{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--line);color:var(--navy);font-size:.8rem;flex:none}
+.stepper li.is-on,.stepper li.is-done{border-top-color:var(--green);color:var(--navy)}
+.stepper li.is-on b{background:var(--green-d);color:#fff}
+.stepper li.is-done b{background:var(--lime);color:var(--navy)}
+@media (max-width:480px){.stepper li span{display:none}.stepper li.is-on span{display:inline}.stepper{grid-template-columns:1fr 1fr 1fr}}
+.bk-form{display:grid;gap:18px}
+.bk-step{border:0;margin:0;padding:0;min-width:0}
+.bk-step.form{display:grid;gap:16px}
+.bk-step:focus{outline:0}
+.bk-q{font:800 1.1rem/1.3 var(--font-title);color:var(--navy);margin:0 0 14px;padding:0}
+.bk-days{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 12px;margin-bottom:6px;scroll-snap-type:x proximity}
+.bk-day{flex:0 0 auto;scroll-snap-align:start;min-width:72px;min-height:84px;padding:10px 8px;border-radius:16px;border:1.5px solid #8FA7B2;background:#fff;color:var(--navy);display:grid;gap:2px;justify-items:center;align-content:center;cursor:pointer;font-family:var(--font-title);transition:transform .15s,background-color .15s,border-color .15s}
+.bk-day small{font:600 .72rem/1 var(--font-body);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.bk-day strong{font-size:1.5rem;line-height:1.1}
+.bk-day:hover{border-color:var(--navy);transform:translateY(-2px)}
+.bk-day[aria-checked="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.bk-day[aria-checked="true"] small{color:#CFE0EA}
+.bk-slots{display:grid;gap:10px}
+.bk-slot{min-height:60px;padding:12px 16px;border-radius:14px;border:1.5px solid #8FA7B2;background:#fff;color:var(--navy);display:flex;align-items:center;justify-content:space-between;gap:12px;text-align:left;cursor:pointer;font:700 1rem/1.3 var(--font-title);transition:border-color .15s,background-color .15s}
+.bk-slot span{font:500 .9rem/1.3 var(--font-body);color:var(--muted)}
+.bk-slot em{font:700 .72rem/1 var(--font-title);font-style:normal;background:#FFF1D6;color:#7A4B00;padding:5px 9px;border-radius:999px;white-space:nowrap}
+.bk-slot:hover{border-color:var(--navy)}
+.bk-slot[aria-checked="true"]{border-color:var(--green-d);background:#E8F6EC;box-shadow:inset 0 0 0 1px var(--green-d)}
+.bk-hint{color:var(--muted);padding:8px 0}
+.bk-hint a{color:var(--green-d);font-weight:700}
+#e-bk-slot{margin-top:10px}
+.bk-slots-wrap.has-err #e-bk-slot,#e-bk-slot.on{display:block}
+.bk-summary{margin:0 0 14px;display:grid;gap:0;background:var(--mist);border-radius:16px;padding:6px 16px}
+.bk-summary div{display:flex;flex-direction:column;gap:2px;padding:10px 0;border-bottom:1px solid var(--line)}
+.bk-summary div:last-child{border-bottom:0}
+.bk-summary dt{font:700 .75rem/1.2 var(--font-title);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.bk-summary dd{margin:0;font-weight:600;color:var(--navy)}
+.bk-note{color:var(--muted);font-size:.95rem}
+.bk-ok{display:grid;gap:14px;justify-items:start}
+.bk-code{background:var(--mist);border-radius:12px;padding:10px 14px}
+.bk-code b{font:800 1.2rem/1 var(--font-title);letter-spacing:.06em;color:var(--navy)}
+.bk-nav{display:flex;gap:10px;flex-wrap:wrap}
+.bk-nav .btn{flex:1 1 140px}
 /* Footer */
 .footer{background:#052B42;color:#CFE0EA;padding-top:calc(var(--r-lg) + 48px);padding-bottom:110px;position:relative;margin-top:calc(var(--r-lg) * -1);border-radius:var(--r-lg) var(--r-lg) 0 0}
 .footer__grid{display:grid;gap:32px}
@@ -791,6 +834,57 @@ dialog .btn{margin-top:18px}
           </div>
         </form>
       </div>
+      <div class="formcard reveal" id="booking" hidden aria-labelledby="bk-title">
+        <h3 id="bk-title" class="bk-title">Reserva tu visita de evaluación</h3>
+        <p class="bk-demo" id="bk-demo" hidden><b>Modo demostración.</b> Así funcionará la reserva; esta solicitud no se guarda.</p>
+        <ol class="stepper" id="bk-stepper" aria-label="Progreso de la reserva">
+          <li data-s="1" class="is-on" aria-current="step"><b>1</b><span>Tus datos</span></li>
+          <li data-s="2"><b>2</b><span>Fecha y hora</span></li>
+          <li data-s="3"><b>3</b><span>Confirmar</span></li>
+        </ol>
+        <form id="bk-form" class="bk-form" novalidate>
+          <div class="hp" aria-hidden="true"><label for="bk-web">No completar este campo</label><input id="bk-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+          <fieldset class="bk-step form" data-step="1" tabindex="-1">
+            <legend class="sr">Tus datos</legend>
+            <div class="field" data-bf="name"><label for="bk-name">Nombre</label><input id="bk-name" type="text" autocomplete="name" aria-describedby="e-bk-name"><span class="err" id="e-bk-name" role="alert">Escribe tu nombre.</span></div>
+            <div class="field" data-bf="phone"><label for="bk-phone">Teléfono</label><input id="bk-phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+56 9 1234 5678" aria-describedby="e-bk-phone"><span class="err" id="e-bk-phone" role="alert">Ingresa un teléfono válido, por ejemplo +56 9 1234 5678.</span></div>
+            <div class="field" data-bf="commune"><label for="bk-commune">Comuna</label><input id="bk-commune" type="text" autocomplete="address-level2" aria-describedby="e-bk-commune"><span class="err" id="e-bk-commune" role="alert">Indica tu comuna.</span></div>
+            <div class="field" data-bf="address"><label for="bk-address">Dirección de la visita</label><input id="bk-address" type="text" autocomplete="street-address" placeholder="Calle, número, depto." aria-describedby="e-bk-address"><span class="err" id="e-bk-address" role="alert">Escribe la dirección donde haremos la visita.</span></div>
+            <div class="field" data-bf="pest"><label for="bk-pest">Tipo de plaga</label>
+              <select id="bk-pest" aria-describedby="e-bk-pest"><option value="">Selecciona una opción</option><option>Arañas</option><option>Zancudos</option><option>Moscas</option><option>Pulgas</option><option>Garrapatas</option><option>Hormigas</option><option>Cucarachas</option><option>Roedores</option><option>Otra plaga</option><option>No estoy seguro</option></select><span class="err" id="e-bk-pest" role="alert">Selecciona el tipo de plaga.</span></div>
+            <div class="field" data-bf="prop"><label for="bk-prop">Tipo de propiedad</label>
+              <select id="bk-prop"><option value="hogar">Hogar</option><option value="empresa">Empresa</option><option value="oficina">Oficina</option><option value="comercio">Comercio</option><option value="otro">Otro</option></select></div>
+            <details class="more full"><summary>Agregar más detalles <small>(opcional)</small></summary>
+              <div class="form more__grid">
+                <div class="field" data-bf="email"><label for="bk-email">Correo</label><input id="bk-email" type="email" autocomplete="email" aria-describedby="e-bk-email"><span class="err" id="e-bk-email" role="alert">Revisa el formato del correo.</span></div>
+                <div class="field"><label for="bk-freq">Frecuencia del servicio</label><select id="bk-freq"><option value="puntual">Servicio puntual</option><option value="mensual">Plan mensual</option><option value="trimestral">Plan trimestral</option></select></div>
+                <div class="field full"><label for="bk-msg">Mensaje</label><textarea id="bk-msg"></textarea></div>
+              </div>
+            </details>
+          </fieldset>
+          <fieldset class="bk-step" data-step="2" hidden tabindex="-1">
+            <legend class="bk-q">Elige el día y el horario de tu visita</legend>
+            <div class="bk-days" id="bk-days" role="radiogroup" aria-label="Día de la visita"></div>
+            <div class="bk-slots" id="bk-slots" role="radiogroup" aria-label="Horario de la visita" aria-live="polite"></div>
+            <p class="err" id="e-bk-slot" role="alert">Elige un día y un horario para continuar.</p>
+          </fieldset>
+          <div class="bk-step" data-step="3" hidden tabindex="-1">
+            <h4 class="bk-q">Revisa tu solicitud</h4>
+            <dl class="bk-summary" id="bk-summary"></dl>
+            <p class="bk-note">Es una visita de evaluación. En el lugar revisamos el problema y te cotizamos el tratamiento. CAPEST confirmará tu hora por WhatsApp.</p>
+          </div>
+          <div class="bk-step bk-ok" data-step="ok" hidden tabindex="-1">
+            <span class="ic-circle"><svg class="i"><use href="#i-check"/></svg></span>
+            <h4 class="bk-q" id="bk-ok-title">Recibimos tu solicitud</h4>
+            <p id="bk-ok-text"></p>
+            <p class="bk-code">Código de reserva: <b id="bk-ok-code"></b></p>
+            <a class="btn btn-lime btn-block" id="bk-ok-wa" href="https://wa.me/56968317150" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Continuar por WhatsApp</a>
+            <button type="button" class="btn btn-line btn-block" id="bk-again">Hacer otra reserva</button>
+          </div>
+          <div class="bk-nav" id="bk-nav"><button type="button" class="btn btn-line" id="bk-back" hidden>Atrás</button><button type="button" class="btn btn-green" id="bk-next">Continuar</button></div>
+          <div class="form__status" id="bk-status" role="status" aria-live="polite" tabindex="-1"></div>
+        </form>
+      </div>
       <aside class="info reveal" aria-labelledby="info-title">
         <h3 id="info-title">Habla directo con CAPEST</h3>
         <ul>
@@ -867,6 +961,9 @@ var CAPEST_CONFIG = {
   extraServices: [],       // [{ name, text, icon }] solo servicios confirmados (ej. desratización)
   faq: { before: "", duration: "", reentry: "", kidsPets: "", communes: "" }, // respuestas confirmadas por CAPEST
   faqConfirmed: false,     // true habilita FAQPage JSON-LD con las respuestas confirmadas
+  /* Reservas de visitas. enabled:false vuelve al formulario simple por WhatsApp (versión anterior).
+     apiUrl: base de los webhooks de n8n, ej. "https://n8n-n8n.fa2cjf.easypanel.host/webhook". Vacío = modo demostración (no guarda nada). */
+  reservas: { enabled: true, demo: true, apiUrl: "", slug: "capest" },
   webhookUrl: "",          // endpoint n8n / CRM que recibe el JSON del formulario
   uploadEnabled: false,    // true solo si el backend acepta fotografías
   turnstileSiteKey: "",    // opcional: captcha anti-spam
@@ -983,6 +1080,158 @@ var CAPEST_CONFIG = {
       showStatus('ok','<span>Tu solicitud está lista. Envíala por WhatsApp para recibir respuesta directa.</span><div>'+wa+'</div>');
     }
   });
+})();
+</script>
+<script>
+/* Reserva de visitas en 3 pasos. Sin apiUrl funciona en modo demostración; con apiUrl usa los webhooks de n8n (capest-slots y capest-reservar). */
+(function(){
+  var C = (window.CAPEST_CONFIG && CAPEST_CONFIG.reservas) || {};
+  var d = document, root = d.getElementById('booking');
+  if(!root || !C.enabled) return;
+  var demo = !C.apiUrl;
+  if(demo && !C.demo) return;                       // sin API ni demo: queda el formulario simple
+  var legacy = d.getElementById('contact-form').closest('.formcard');
+  legacy.hidden = true; root.hidden = false;
+  if(demo) d.getElementById('bk-demo').hidden = false;
+
+  var $ = function(id){ return d.getElementById(id); };
+  var steps = [].slice.call(root.querySelectorAll('.bk-step'));
+  var st = { step:1, days:[], date:'', block:null, t0:Date.now(), loaded:false };
+  var fmt = new Intl.DateTimeFormat('es-CL',{weekday:'long',day:'numeric',month:'long'});
+  var fmtS = new Intl.DateTimeFormat('es-CL',{weekday:'short'});
+  var fmtM = new Intl.DateTimeFormat('es-CL',{month:'short'});
+  function pd(s){ var p=s.split('-'); return new Date(+p[0],+p[1]-1,+p[2]); }
+  function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+  function longDate(s){ return cap(fmt.format(pd(s))); }
+  function waLink(msg){ return 'https://wa.me/56968317150?text='+encodeURIComponent(msg); }
+  function track(n,p){ try{ if(window.gtag) window.gtag('event',n,p||{}); if(window.fbq) window.fbq('trackCustom',n,p||{}); }catch(e){} }
+
+  /* ---- API (o demostración) ---- */
+  function api(path, body){
+    var ctl = ('AbortController' in window) ? new AbortController() : null, to = setTimeout(function(){ if(ctl) ctl.abort(); }, 15000);
+    return fetch(C.apiUrl.replace(/\/$/,'')+'/'+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),signal:ctl?ctl.signal:undefined})
+      .then(function(r){ return r.json(); }).finally(function(){ clearTimeout(to); });
+  }
+  function demoDays(){
+    var out=[], t=new Date(); t.setHours(0,0,0,0);
+    for(var i=1; out.length<10; i++){
+      var x=new Date(t.getFullYear(),t.getMonth(),t.getDate()+i); if(x.getDay()===0) continue;
+      var key=[x.getFullYear(),String(x.getMonth()+1).padStart(2,'0'),String(x.getDate()).padStart(2,'0')].join('-'), seed=(x.getDate()*7+x.getMonth())%5;
+      var b=[]; if(seed!==0) b.push({id:'manana',etiqueta:'Mañana',desde:'09:00',hasta:'13:00',cupos:seed===1?1:2});
+      if(seed!==2) b.push({id:'tarde',etiqueta:'Tarde',desde:'14:00',hasta:'18:00',cupos:seed===3?1:2});
+      if(b.length) out.push({fecha:key,bloques:b});
+    }
+    return out;
+  }
+  function getDays(){
+    if(demo) return new Promise(function(r){ setTimeout(function(){ r(demoDays()); },450); });
+    return api('capest-slots',{slug:C.slug||'capest',dias:14}).then(function(r){ if(!r||!r.ok) throw new Error('slots'); return r.data||[]; });
+  }
+  function send(payload){
+    if(demo) return new Promise(function(r){ setTimeout(function(){
+      var b=null; st.days.forEach(function(x){ if(x.fecha===payload.date) x.bloques.forEach(function(y){ if(y.id===payload.block) b=y; }); });
+      r({ok:true,data:{codigo:'DEMO-'+Math.random().toString(36).slice(2,6).toUpperCase(),fecha:payload.date,etiqueta:b?b.etiqueta:'',hora_desde:b?b.desde:'',hora_hasta:b?b.hasta:''}});
+    },700); });
+    return api('capest-reservar',payload);
+  }
+
+  /* ---- pasos ---- */
+  function go(n, focus){
+    st.step = n;
+    steps.forEach(function(s){ s.hidden = String(s.getAttribute('data-step')) !== String(n); });
+    [].forEach.call($('bk-stepper').children,function(li){
+      var k=+li.getAttribute('data-s'), num=(n==='ok')?4:n;
+      li.classList.toggle('is-on',k===num); li.classList.toggle('is-done',k<num);
+      if(k===num) li.setAttribute('aria-current','step'); else li.removeAttribute('aria-current');
+    });
+    $('bk-back').hidden = (n===1||n==='ok'); $('bk-nav').hidden = (n==='ok');
+    $('bk-next').textContent = n===3 ? 'Enviar solicitud' : 'Continuar';
+    $('bk-status').className='form__status'; $('bk-status').textContent='';
+    if(focus!==false){ var el=root.querySelector('.bk-step[data-step="'+n+'"]'); if(el) el.focus({preventScroll:false}); }
+  }
+  function setErr(id,bad){ var f=root.querySelector('[data-bf="'+id+'"]'); if(!f) return; f.classList.toggle('has-err',bad); var i=f.querySelector('input,select'); if(i) i.setAttribute('aria-invalid',bad?'true':'false'); }
+  function v1(){
+    var digits=$('bk-phone').value.replace(/\D/g,'');
+    var rules={ name:$('bk-name').value.trim().length<2, phone:digits.length<8||digits.length>12, commune:$('bk-commune').value.trim().length<2,
+      address:$('bk-address').value.trim().length<5, pest:!$('bk-pest').value, email:!!$('bk-email').value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test($('bk-email').value) };
+    var first=null; Object.keys(rules).forEach(function(k){ setErr(k,rules[k]); if(rules[k]&&!first) first=k; });
+    if(first){ var f=root.querySelector('[data-bf="'+first+'"] input, [data-bf="'+first+'"] select'); if(first==='email') root.querySelector('.more').open=true; f.focus(); }
+    return !first;
+  }
+  root.addEventListener('input',function(e){ var f=e.target.closest('[data-bf]'); if(f&&f.classList.contains('has-err')){ f.classList.remove('has-err'); e.target.setAttribute('aria-invalid','false'); } });
+
+  /* ---- día y horario ---- */
+  function renderDays(){
+    var wrap=$('bk-days'), slots=$('bk-slots'); wrap.innerHTML=''; slots.innerHTML='';
+    if(!st.days.length){ slots.innerHTML='<p class="bk-hint">No hay horarios disponibles por ahora. <a href="'+waLink('Hola, quiero reservar una visita de evaluación para control de plagas.')+'" target="_blank" rel="noopener">Escríbenos por WhatsApp</a> y coordinamos contigo.</p>'; return; }
+    st.days.forEach(function(x){
+      var dt=pd(x.fecha), b=d.createElement('button'); b.type='button'; b.className='bk-day'; b.setAttribute('role','radio'); b.setAttribute('aria-checked',String(x.fecha===st.date));
+      b.setAttribute('aria-label',longDate(x.fecha)); b.innerHTML='<small>'+cap(fmtS.format(dt).replace('.',''))+'</small><strong>'+dt.getDate()+'</strong><small>'+fmtM.format(dt).replace('.','')+'</small>';
+      b.addEventListener('click',function(){ st.date=x.fecha; st.block=null; renderDays(); renderSlots(); });
+      wrap.appendChild(b);
+    });
+    renderSlots();
+  }
+  function renderSlots(){
+    var slots=$('bk-slots'); slots.innerHTML='';
+    var day=st.days.filter(function(x){ return x.fecha===st.date; })[0];
+    if(!day){ slots.innerHTML='<p class="bk-hint">Elige un día para ver los horarios.</p>'; return; }
+    day.bloques.forEach(function(bq){
+      var b=d.createElement('button'); b.type='button'; b.className='bk-slot'; b.setAttribute('role','radio'); b.setAttribute('aria-checked',String(st.block&&st.block.id===bq.id));
+      b.innerHTML='<div>'+bq.etiqueta+'<br><span>'+bq.desde+' a '+bq.hasta+'</span></div>'+(bq.cupos<=1?'<em>Último cupo</em>':'');
+      b.addEventListener('click',function(){ st.block=bq; $('e-bk-slot').classList.remove('on'); renderSlots(); });
+      slots.appendChild(b);
+    });
+  }
+  function loadDays(){
+    $('bk-slots').innerHTML='<p class="bk-hint" role="status">Buscando horarios disponibles…</p>'; $('bk-days').innerHTML='';
+    return getDays().then(function(days){ st.days=days; st.loaded=true; if(!days.some(function(x){return x.fecha===st.date;})){ st.date=''; st.block=null; } renderDays(); })
+      .catch(function(){ st.days=[]; st.loaded=false; $('bk-slots').innerHTML='<p class="bk-hint">No pudimos cargar los horarios. <a href="'+waLink('Hola, quiero reservar una visita de evaluación para control de plagas.')+'" target="_blank" rel="noopener">Reserva por WhatsApp</a> o inténtalo de nuevo en un momento.</p>'; });
+  }
+
+  /* ---- resumen y envío ---- */
+  function payload(){ return { slug:C.slug||'capest', name:$('bk-name').value.trim(), phone:$('bk-phone').value.trim(), email:$('bk-email').value.trim(), propertyType:$('bk-prop').value,
+    pestType:$('bk-pest').value, commune:$('bk-commune').value.trim(), address:$('bk-address').value.trim(), serviceFrequency:$('bk-freq').value, message:$('bk-msg').value.trim(),
+    date:st.date, block:st.block&&st.block.id, source:'website', hp:$('bk-web').value, elapsedMs:Date.now()-st.t0 }; }
+  function summary(){
+    var p=payload(), rows=[['Fecha',longDate(p.date)],['Horario',st.block.etiqueta+' ('+st.block.desde+' a '+st.block.hasta+')'],['Dirección',p.address+', '+p.commune],['Plaga',p.pestType],['Contacto',p.name+' · '+p.phone]];
+    $('bk-summary').innerHTML=rows.map(function(r){ var dt=d.createElement('div'); dt.innerHTML='<dt></dt><dd></dd>'; dt.firstChild.textContent=r[0]; dt.lastChild.textContent=r[1]; return dt.outerHTML; }).join('');
+  }
+  function fail(msg,back){
+    if(back){ go(2,false); loadDays(); }
+    var s=$('bk-status'); s.className='form__status bad'; s.innerHTML=''; s.appendChild(d.createTextNode(msg+' '));
+    var a=d.createElement('a'); a.href=waLink('Hola, quiero reservar una visita de evaluación para control de plagas.'); a.target='_blank'; a.rel='noopener'; a.textContent='Reservar por WhatsApp'; a.style.fontWeight='700'; s.appendChild(a); s.focus();
+  }
+  function submit(){
+    var btn=$('bk-next'); btn.disabled=true; btn.textContent='Enviando…';
+    var p=payload();
+    send(p).then(function(r){
+      if(r&&r.ok){ success(r.data,p); return; }
+      var e=r&&r.error;
+      if(e==='bloque_lleno'||e==='bloque_no_disponible'){ fail('Ese horario se acaba de ocupar. Elige otro.',true); }
+      else if(e==='demasiadas_solicitudes'){ fail('Ya tienes varias solicitudes activas con este teléfono.',false); }
+      else if(e==='datos_invalidos'){ fail('Revisa tus datos e inténtalo de nuevo.',false); }
+      else { fail('No pudimos enviar la solicitud.',false); }
+    }).catch(function(){ fail('No pudimos conectarnos.',false); })
+    .finally(function(){ btn.disabled=false; btn.textContent=st.step===3?'Enviar solicitud':'Continuar'; });
+  }
+  function success(data,p){
+    track('booking_submit',{pest:p.pestType,property:p.propertyType});
+    var when=longDate(data.fecha)+', '+String(data.etiqueta||'').toLowerCase()+(data.hora_desde?' ('+data.hora_desde+' a '+data.hora_hasta+')':'');
+    $('bk-ok-text').textContent='Tu visita quedó solicitada para el '+when.charAt(0).toLowerCase()+when.slice(1)+'. Te confirmaremos por WhatsApp o llamada.';
+    $('bk-ok-code').textContent=data.codigo;
+    $('bk-ok-wa').href=waLink('Hola, acabo de reservar una visita ('+data.codigo+') para el '+longDate(data.fecha).toLowerCase()+', '+String(data.etiqueta||'').toLowerCase()+'. Mi nombre es '+p.name+', estoy en '+p.commune+' y el problema que tengo es '+p.pestType+'.');
+    go('ok');
+  }
+
+  $('bk-next').addEventListener('click',function(){
+    if(st.step===1){ if(!v1()) return; go(2); if(!st.loaded) loadDays(); }
+    else if(st.step===2){ if(!st.date||!st.block){ $('e-bk-slot').classList.add('on'); return; } summary(); go(3); }
+    else if(st.step===3){ if($('bk-web').value) return; submit(); }
+  });
+  $('bk-back').addEventListener('click',function(){ go(st.step===3?2:1); });
+  $('bk-again').addEventListener('click',function(){ $('bk-form').reset(); st.date=''; st.block=null; st.loaded=false; st.t0=Date.now(); go(1); });
+  $('bk-form').addEventListener('submit',function(e){ e.preventDefault(); });
 })();
 </script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>

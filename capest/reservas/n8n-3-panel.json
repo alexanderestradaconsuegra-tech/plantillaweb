@@ -1,0 +1,207 @@
+{
+  "name": "CAPEST - Panel de administración",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "capest-admin",
+        "responseMode": "responseNode",
+        "options": {
+          "allowedOrigins": "*"
+        }
+      },
+      "id": "63bff352-18c8-49d5-b08b-765ad9c51358",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "c5645261-3b63-4dad-9caf-8421b92daa67"
+    },
+    {
+      "parameters": {
+        "jsCode": "// CAMBIAR la clave antes de usar. Es la misma que se escribe en el panel.\nconst CLAVE_ADMIN = 'CAMBIAR_CLAVE_ADMIN';\nconst j = $input.first().json;\nconst key = (j.headers && (j.headers['x-admin-key'] || '')) || '';\nconst b = j.body || {};\nif (CLAVE_ADMIN === 'CAMBIAR_CLAVE_ADMIN' || key !== CLAVE_ADMIN) {\n  return [{ json: { auth: false } }];\n}\nconst f = v => (/^\\d{4}-\\d{2}-\\d{2}$/.test(v || '') ? v : '');\nconst ESTADOS = ['pendiente', 'confirmada', 'realizada', 'cancelada'];\nlet query = '', params = [];\nif (b.action === 'login') {\n  query = 'SELECT 1 AS ok'; params = [];\n} else if (b.action === 'listar') {\n  query = \"SELECT id, codigo, nombre, telefono, email, tipo_propiedad, plaga, comuna, direccion, frecuencia, mensaje, to_char(fecha,'YYYY-MM-DD') AS fecha, bloque_id, estado, notas_internas, created_at FROM reservas WHERE org_id = 'capest' AND fecha BETWEEN $1::date AND $2::date AND ($3 = '' OR estado = $3) ORDER BY fecha, bloque_id, created_at\";\n  params = [f(b.desde) || '2000-01-01', f(b.hasta) || '2100-01-01', ESTADOS.includes(b.estado) ? b.estado : ''];\n} else if (b.action === 'estado' && ESTADOS.includes(b.estado) && /^[0-9a-f-]{36}$/i.test(b.id || '')) {\n  query = \"UPDATE reservas SET estado = $2, notas_internas = COALESCE(NULLIF($3, ''), notas_internas), updated_at = now() WHERE org_id = 'capest' AND id = $1::uuid RETURNING id, estado\";\n  params = [b.id, b.estado, String(b.notas || '').slice(0, 600)];\n} else if (b.action === 'bloquear' && f(b.fecha)) {\n  query = \"INSERT INTO bloqueos (org_id, fecha, bloque_id, motivo) VALUES ('capest', $1::date, NULLIF($2, ''), $3) RETURNING id\";\n  params = [b.fecha, String(b.bloque || '').slice(0, 30), String(b.motivo || '').slice(0, 200)];\n} else {\n  return [{ json: { auth: true, invalid: true } }];\n}\nreturn [{ json: { auth: true, invalid: false, query, params } }];"
+      },
+      "id": "afd2d74c-cb08-4644-a1af-13b3aa56b69a",
+      "name": "Autenticar y preparar",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2b2b7fe4-2167-4941-9edc-f41bef10f517",
+              "leftValue": "={{ $json.auth && !$json.invalid }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "c3453ccb-cb23-4274-9c3a-bf7de3e1a855",
+      "name": "¿Autorizado y válido?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        480,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "={{ $json.query }}",
+        "options": {
+          "queryReplacement": "={{ $json.params }}"
+        }
+      },
+      "id": "78b673f2-3dc4-4f6c-8e98-9be960c200a6",
+      "name": "Ejecutar",
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.5,
+      "position": [
+        720,
+        -60
+      ],
+      "credentials": {
+        "postgres": {
+          "id": "REEMPLAZAR_ID_CREDENCIAL",
+          "name": "CAPEST DB"
+        }
+      },
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all().map(i => i.json).filter(r => Object.keys(r).length);\nreturn [{ json: { respuesta: { ok: true, data: items } } }];"
+      },
+      "id": "208cbfb3-f22c-4928-b260-f7f04b96260a",
+      "name": "Armar respuesta",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        960,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify($json.respuesta) }}",
+        "options": {}
+      },
+      "id": "6a966971-cf3c-4243-a62a-b77e733b4bcb",
+      "name": "Responder",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1200,
+        -60
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ JSON.stringify({ ok: false, error: $json.auth ? 'solicitud_invalida' : 'no_autorizado' }) }}",
+        "options": {}
+      },
+      "id": "b2c347de-ed1a-46f1-a9a6-7bf654061452",
+      "name": "Responder error",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        720,
+        140
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Autenticar y preparar",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Autenticar y preparar": {
+      "main": [
+        [
+          {
+            "node": "¿Autorizado y válido?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "¿Autorizado y válido?": {
+      "main": [
+        [
+          {
+            "node": "Ejecutar",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Responder error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ejecutar": {
+      "main": [
+        [
+          {
+            "node": "Armar respuesta",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Armar respuesta": {
+      "main": [
+        [
+          {
+            "node": "Responder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

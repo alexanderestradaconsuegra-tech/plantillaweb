@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Panel CAPEST | Reservas de visitas</title>
+<link rel="icon" href="../assets/favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap">
+<style>
+:root{--navy:#073B5A;--green:#149447;--green-d:#087A39;--lime:#75D52B;--mist:#F3F7F5;--ink:#102F3D;--muted:#3F5F6E;--line:#D7E4DD;--red:#B01919;
+  --font-title:'Plus Jakarta Sans',system-ui,sans-serif;--font-body:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--mist);color:var(--ink);font:400 16px/1.5 var(--font-body)}
+h1,h2,h3{font-family:var(--font-title);color:var(--navy);margin:0;line-height:1.15}
+button,input,select,textarea{font:inherit}
+:focus-visible{outline:3px solid var(--lime);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1000px;margin-inline:auto;padding-inline:max(16px,env(safe-area-inset-left,0px)) }
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:10px 18px;border-radius:999px;border:2px solid transparent;font:700 .95rem/1.2 var(--font-title);cursor:pointer;text-decoration:none;transition:transform .15s,background-color .15s}
+.btn:hover{transform:translateY(-1px)}.btn:active{transform:none}
+.btn-green{background:var(--green-d);color:#fff}.btn-green:hover{background:var(--navy)}
+.btn-line{background:#fff;color:var(--navy);border-color:var(--navy)}.btn-line:hover{background:var(--navy);color:#fff}
+.btn-lime{background:var(--lime);color:var(--navy)}
+.btn-sm{min-height:44px;padding:8px 14px;font-size:.9rem}
+.btn-danger{background:#fff;color:var(--red);border-color:var(--red)}.btn-danger.arm{background:var(--red);color:#fff}
+header.top{background:var(--navy);color:#fff;padding-block:14px;padding-top:calc(14px + env(safe-area-inset-top,0px))}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+header.top img{height:36px;width:auto;display:block}
+header.top h1{color:#fff;font-size:1.05rem}
+.login{max-width:420px;margin:12vh auto 0;background:#fff;border-radius:24px;padding:28px 24px;box-shadow:0 12px 32px rgba(7,59,90,.1);display:grid;gap:14px}
+.field{display:grid;gap:6px}.field label{font-weight:600;color:var(--navy)}
+.field input,.field select{min-height:48px;padding:10px 14px;border:1.5px solid #8FA7B2;border-radius:12px;background:#fff}
+.err{color:var(--red);font-weight:600;min-height:1.2em}
+.demo{background:#FFF8E1;border-bottom:1px solid #E7C66A;color:#5B4300;padding:10px 16px;text-align:center;font-size:.92rem}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-block:20px}
+.stat{background:#fff;border-radius:16px;padding:14px;border:1px solid var(--line)}
+.stat b{display:block;font:800 1.8rem/1 var(--font-title);color:var(--navy)}.stat span{font-size:.85rem;color:var(--muted)}
+.tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;flex:1 1 auto}
+.chip{flex:none;min-height:44px;padding:8px 16px;border-radius:999px;border:1.5px solid #8FA7B2;background:#fff;color:var(--navy);font-weight:600;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.day{margin-block:22px 10px;font:800 1.05rem/1.2 var(--font-title);color:var(--navy);display:flex;align-items:center;gap:10px}
+.day small{font:500 .85rem var(--font-body);color:var(--muted)}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;gap:10px;margin-bottom:12px}
+.card header{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;flex-wrap:wrap}
+.card h3{font-size:1.05rem}
+.meta{display:grid;gap:2px;color:var(--muted);font-size:.95rem}
+.meta b{color:var(--ink);font-weight:600}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:999px;font:700 .78rem/1 var(--font-title);letter-spacing:.04em;text-transform:uppercase}
+.pill::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.pill.pendiente{background:#FFF1D6;color:#7A4B00}.pill.confirmada{background:#E3F4E8;color:#075C2B}
+.pill.realizada{background:#E3EEF5;color:var(--navy)}.pill.cancelada{background:#FBE5E5;color:var(--red)}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.empty{background:#fff;border:1px dashed #8FA7B2;border-radius:18px;padding:28px;text-align:center;color:var(--muted)}
+dialog{border:0;border-radius:20px;padding:24px;max-width:420px;width:calc(100% - 32px);box-shadow:0 12px 32px rgba(7,59,90,.25)}
+dialog::backdrop{background:rgba(7,59,90,.55)}
+dialog form{display:grid;gap:14px}
+[hidden]{display:none!important}
+@media (max-width:480px){.stats{gap:8px}.stat{padding:12px}.stat b{font-size:1.5rem}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <img src="../assets/logo-capest-blanco.svg" alt="CAPEST" width="107" height="36">
+  <div style="display:flex;align-items:center;gap:10px"><h1>Reservas de visitas</h1><button class="btn btn-line btn-sm" id="logout" hidden type="button">Salir</button></div>
+</div></header>
+<div class="demo" id="demo" hidden><b>Modo demostración.</b> Estos datos son de ejemplo. Al conectar el sistema aparecerán las reservas reales. Usa cualquier clave para entrar.</div>
+
+<main class="wrap">
+  <form class="login" id="login" novalidate>
+    <h2>Ingresar al panel</h2>
+    <div class="field"><label for="clave">Clave de acceso</label><input id="clave" type="password" autocomplete="current-password" aria-describedby="login-err"></div>
+    <div class="err" id="login-err" role="alert"></div>
+    <button class="btn btn-green" type="submit" id="login-btn">Entrar</button>
+  </form>
+
+  <section id="app" hidden>
+    <div class="stats" aria-label="Resumen">
+      <div class="stat"><b id="s-hoy">0</b><span>Visitas hoy</span></div>
+      <div class="stat"><b id="s-pend">0</b><span>Por confirmar</span></div>
+      <div class="stat"><b id="s-sem">0</b><span>Próximos 7 días</span></div>
+    </div>
+    <div class="tools">
+      <div class="chips" role="group" aria-label="Filtrar por estado" id="chips"></div>
+      <button class="btn btn-line btn-sm" id="reload" type="button">Actualizar</button>
+      <button class="btn btn-line btn-sm" id="block-open" type="button">Bloquear fecha</button>
+    </div>
+    <div id="msg" class="err" role="status" aria-live="polite"></div>
+    <div id="list" aria-live="polite"></div>
+  </section>
+</main>
+
+<dialog id="block-dlg" aria-labelledby="block-title">
+  <form id="block-form" method="dialog">
+    <h2 id="block-title">Bloquear fecha</h2>
+    <div class="field"><label for="b-fecha">Fecha</label><input id="b-fecha" type="date" required></div>
+    <div class="field"><label for="b-bloque">Horario</label><select id="b-bloque"><option value="">Todo el día</option><option value="manana">Solo mañana</option><option value="tarde">Solo tarde</option></select></div>
+    <div class="field"><label for="b-motivo">Motivo (opcional)</label><input id="b-motivo" type="text" maxlength="100"></div>
+    <div class="err" id="b-err" role="alert"></div>
+    <div class="actions"><button class="btn btn-green" type="submit" id="b-ok">Bloquear</button><button class="btn btn-line" type="button" id="b-cancel">Cerrar</button></div>
+  </form>
+</dialog>
+
+<script>
+/* Base de los webhooks de n8n, ej. "https://n8n-n8n.fa2cjf.easypanel.host/webhook". Vacío = modo demostración. */
+var API = '';
+var ESTADOS = { pendiente:'Pendiente', confirmada:'Confirmada', realizada:'Realizada', cancelada:'Cancelada' };
+var BLOQUES = { manana:'Mañana (09:00 a 13:00)', tarde:'Tarde (14:00 a 18:00)' };
+var DEMO = !API, KEY = '', filtro = '', rows = [];
+var $ = function(id){ return document.getElementById(id); };
+function store(k,v){ try{ if(v===undefined) return sessionStorage.getItem(k); if(v===null) sessionStorage.removeItem(k); else sessionStorage.setItem(k,v); }catch(e){ return null; } }
+function iso(dt){ return [dt.getFullYear(),String(dt.getMonth()+1).padStart(2,'0'),String(dt.getDate()).padStart(2,'0')].join('-'); }
+function pd(s){ var p=s.split('-'); return new Date(+p[0],+p[1]-1,+p[2]); }
+function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+var fmt = new Intl.DateTimeFormat('es-CL',{weekday:'long',day:'numeric',month:'long'});
+
+/* ---------- datos ---------- */
+function demoRows(){
+  var t=new Date(), out=[], nom=[['Juan Pérez','+56912345678','Ñuñoa','Irarrázaval 2000','Moscas','hogar'],['Restaurante La Plaza','+56922223333','Santiago','Merced 455','Cucarachas','comercio'],['María Soto','+56955554444','Providencia','Los Leones 1234','Hormigas','hogar'],['Bodega Norte SpA','+56988887777','Quilicura','Av. Lo Echevers 880','Roedores','empresa'],['Ana Ríos','+56977776666','Maipú','Pasaje 7 #89','Pulgas','hogar']];
+  nom.forEach(function(n,i){ var x=new Date(t.getFullYear(),t.getMonth(),t.getDate()+(i<2?0:i-1)); if(x.getDay()===0) x.setDate(x.getDate()+1);
+    out.push({id:'demo'+i,codigo:'DEMO-'+(100+i),nombre:n[0],telefono:n[1],email:'',tipo_propiedad:n[5],plaga:n[4],comuna:n[2],direccion:n[3],frecuencia:i===1?'mensual':'puntual',mensaje:i===0?'Tengo mascotas, avisar antes de llegar.':'',fecha:iso(x),bloque_id:i%2?'tarde':'manana',estado:['pendiente','confirmada','pendiente','pendiente','realizada'][i],notas_internas:''}); });
+  return out;
+}
+function call(body){
+  if(DEMO) return Promise.resolve({ok:true,data:null});
+  return fetch(API.replace(/\/$/,'')+'/capest-admin',{method:'POST',headers:{'Content-Type':'application/json','x-admin-key':KEY},body:JSON.stringify(body)}).then(function(r){ return r.json(); });
+}
+function load(){
+  $('msg').textContent='';
+  var t=new Date(), d1=new Date(t.getFullYear(),t.getMonth(),t.getDate()-7), d2=new Date(t.getFullYear(),t.getMonth(),t.getDate()+90);
+  if(DEMO){ if(!rows.length) rows=demoRows(); render(); return Promise.resolve(); }
+  return call({action:'listar',desde:iso(d1),hasta:iso(d2)}).then(function(r){
+    if(!r||!r.ok){ if(r&&r.error==='no_autorizado') return logout('La clave no es correcta.'); throw new Error(); }
+    rows=r.data||[]; render();
+  }).catch(function(){ $('msg').textContent='No pudimos cargar las reservas. Revisa tu conexión e intenta de nuevo.'; });
+}
+function setEstado(id,estado){
+  if(DEMO){ rows.forEach(function(r){ if(r.id===id) r.estado=estado; }); render(); return; }
+  call({action:'estado',id:id,estado:estado}).then(function(r){
+    if(!r||!r.ok) throw new Error(); rows.forEach(function(x){ if(x.id===id) x.estado=estado; }); render();
+  }).catch(function(){ $('msg').textContent='No se pudo actualizar la reserva. Intenta de nuevo.'; });
+}
+
+/* ---------- vista ---------- */
+function digits(s){ return String(s||'').replace(/\D/g,''); }
+function render(){
+  var hoy=iso(new Date()), en7=iso(new Date(Date.now()+7*864e5));
+  var act=rows.filter(function(r){ return r.estado!=='cancelada'; });
+  $('s-hoy').textContent=act.filter(function(r){ return r.fecha===hoy; }).length;
+  $('s-pend').textContent=rows.filter(function(r){ return r.estado==='pendiente'; }).length;
+  $('s-sem').textContent=act.filter(function(r){ return r.fecha>=hoy&&r.fecha<=en7; }).length;
+  var vis=rows.filter(function(r){ return !filtro||r.estado===filtro; }).sort(function(a,b){ return (a.fecha+a.bloque_id)<(b.fecha+b.bloque_id)?-1:1; });
+  var list=$('list'); list.innerHTML='';
+  if(!vis.length){ list.innerHTML='<div class="empty">No hay reservas para mostrar.</div>'; return; }
+  var cur='';
+  vis.forEach(function(r){
+    if(r.fecha!==cur){ cur=r.fecha; var h=document.createElement('h2'); h.className='day'; h.innerHTML='<span></span><small></small>'; h.firstChild.textContent=cap(fmt.format(pd(cur))); h.lastChild.textContent=cur===hoy?'Hoy':''; list.appendChild(h); }
+    list.appendChild(card(r));
+  });
+}
+function el(tag,cls,txt){ var e=document.createElement(tag); if(cls) e.className=cls; if(txt!==undefined) e.textContent=txt; return e; }
+function card(r){
+  var c=el('article','card'), hd=el('header'), left=el('div');
+  left.appendChild(el('h3','',r.nombre)); left.appendChild(el('div','meta',BLOQUES[r.bloque_id]||r.bloque_id));
+  var p=el('span','pill '+r.estado,ESTADOS[r.estado]||r.estado); hd.appendChild(left); hd.appendChild(p); c.appendChild(hd);
+  var m=el('div','meta');
+  [['Dirección',r.direccion+', '+r.comuna],['Plaga',r.plaga+' · '+r.tipo_propiedad+' · '+r.frecuencia],['Teléfono',r.telefono],['Mensaje',r.mensaje],['Código',r.codigo]].forEach(function(x){
+    if(!x[1]) return; var l=el('div'); var b=el('b','',x[0]+': '); l.appendChild(b); l.appendChild(document.createTextNode(x[1])); m.appendChild(l); });
+  c.appendChild(m);
+  var a=el('div','actions');
+  var wa=el('a','btn btn-line btn-sm','WhatsApp'); wa.target='_blank'; wa.rel='noopener';
+  wa.href='https://wa.me/'+digits(r.telefono)+'?text='+encodeURIComponent('Hola '+r.nombre.split(' ')[0]+', te escribimos de CAPEST por tu visita de evaluación del '+cap(fmt.format(pd(r.fecha))).toLowerCase()+', '+(BLOQUES[r.bloque_id]||'')+'. ¿Te acomoda ese horario?');
+  var tel=el('a','btn btn-line btn-sm','Llamar'); tel.href='tel:'+r.telefono; a.appendChild(wa); a.appendChild(tel);
+  function act(txt,cls,fn){ var b=el('button','btn btn-sm '+cls,txt); b.type='button'; b.addEventListener('click',fn); a.appendChild(b); return b; }
+  if(r.estado==='pendiente') act('Confirmar','btn-green',function(){ setEstado(r.id,'confirmada'); });
+  if(r.estado==='confirmada') act('Marcar realizada','btn-green',function(){ setEstado(r.id,'realizada'); });
+  if(r.estado==='cancelada'||r.estado==='realizada') act('Reabrir','btn-line',function(){ setEstado(r.id,'pendiente'); });
+  if(r.estado==='pendiente'||r.estado==='confirmada'){
+    var armed=false, t; var cb=act('Cancelar','btn-danger',function(){
+      if(!armed){ armed=true; cb.classList.add('arm'); cb.textContent='Confirmar cancelación'; t=setTimeout(function(){ armed=false; cb.classList.remove('arm'); cb.textContent='Cancelar'; },4000); return; }
+      clearTimeout(t); setEstado(r.id,'cancelada'); });
+  }
+  c.appendChild(a); return c;
+}
+function chips(){
+  var box=$('chips'); box.innerHTML='';
+  [['','Todas']].concat(Object.keys(ESTADOS).map(function(k){ return [k,ESTADOS[k]+'s'.replace('Realizadas','Realizadas')]; })).forEach(function(x){
+    var b=el('button','chip',x[0]===''?'Todas':({pendiente:'Pendientes',confirmada:'Confirmadas',realizada:'Realizadas',cancelada:'Canceladas'})[x[0]]); b.type='button'; b.setAttribute('aria-pressed',String(filtro===x[0]));
+    b.addEventListener('click',function(){ filtro=x[0]; chips(); render(); }); box.appendChild(b); });
+}
+
+/* ---------- sesión ---------- */
+function enter(){ $('login').hidden=true; $('app').hidden=false; $('logout').hidden=false; chips(); load(); }
+function logout(msg){ KEY=''; store('capest_key',null); rows=[]; $('app').hidden=true; $('logout').hidden=true; $('login').hidden=false; $('login-err').textContent=msg||''; $('clave').value=''; $('clave').focus(); }
+$('demo').hidden=!DEMO;
+$('login').addEventListener('submit',function(e){
+  e.preventDefault(); var k=$('clave').value; if(!k){ $('login-err').textContent='Escribe la clave de acceso.'; return; }
+  KEY=k; $('login-btn').disabled=true; $('login-btn').textContent='Verificando…';
+  (DEMO?Promise.resolve({ok:true}):call({action:'login'})).then(function(r){
+    if(r&&r.ok){ store('capest_key',k); $('login-err').textContent=''; enter(); } else { $('login-err').textContent='La clave no es correcta.'; }
+  }).catch(function(){ $('login-err').textContent='No pudimos conectarnos. Intenta de nuevo.'; })
+  .finally(function(){ $('login-btn').disabled=false; $('login-btn').textContent='Entrar'; });
+});
+$('logout').addEventListener('click',function(){ logout(); });
+$('reload').addEventListener('click',load);
+$('block-open').addEventListener('click',function(){ $('b-err').textContent=''; $('b-fecha').min=iso(new Date()); $('block-dlg').showModal(); });
+$('b-cancel').addEventListener('click',function(){ $('block-dlg').close(); });
+$('block-form').addEventListener('submit',function(e){
+  e.preventDefault(); if(!$('b-fecha').value){ $('b-err').textContent='Elige la fecha que quieres bloquear.'; return; }
+  var body={action:'bloquear',fecha:$('b-fecha').value,bloque:$('b-bloque').value,motivo:$('b-motivo').value};
+  (DEMO?Promise.resolve({ok:true}):call(body)).then(function(r){
+    if(!r||!r.ok) throw new Error(); $('block-dlg').close(); $('msg').textContent='Fecha bloqueada: '+cap(fmt.format(pd(body.fecha)))+'.'; $('b-motivo').value='';
+  }).catch(function(){ $('b-err').textContent='No se pudo bloquear la fecha. Intenta de nuevo.'; });
+});
+var saved=store('capest_key'); if(saved&&!DEMO){ KEY=saved; enter(); }
+</script>
+</body>
+</html>
