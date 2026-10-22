@@ -21,13 +21,16 @@
 <meta property="og:site_name" content="CAPEST">
 <meta property="og:title" content="CAPEST | Control de plagas y sanitización para hogares y empresas">
 <meta property="og:description" content="Control profesional de plagas y sanitización para hogares, oficinas y empresas. Personal capacitado, atención programada y cotización directa por WhatsApp.">
-<meta property="og:image" content="https://dominio-por-confirmar.cl/assets/og-capest.png" data-8b-placeholder="og-image">
+<meta property="og:image" content="https://dominio-por-confirmar.cl/assets/og-capest.jpg" data-8b-placeholder="og-image">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="Técnico de CAPEST aplicando un tratamiento de control de plagas en el jardín de una vivienda">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23073B5A'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='800' font-size='36' text-anchor='middle' fill='%2375D52B'%3EC%3C/text%3E%3C/svg%3E" data-8b-placeholder="favicon">
+<link rel="icon" href="assets/favicon.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="assets/hero.webp" media="(min-width:900px)" fetchpriority="high">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap">
 <script type="application/ld+json">
 {
@@ -36,6 +39,8 @@
   "name": "CAPEST",
   "description": "Control profesional de plagas y sanitización para hogares, oficinas y empresas en Chile.",
   "telephone": "+56968317150",
+  "logo": "https://dominio-por-confirmar.cl/assets/logo-capest.webp",
+  "image": "https://dominio-por-confirmar.cl/assets/og-capest.jpg",
   "areaServed": { "@type": "Country", "name": "Chile" },
   "serviceType": ["Control de plagas", "Control de insectos", "Sanitización de espacios"],
   "url": "https://dominio-por-confirmar.cl/"
@@ -106,7 +111,7 @@ a{color:inherit}
 .nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--white);border-bottom:1px solid var(--line)}
 .nav__bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:var(--header-h)}
 .logo{display:inline-flex;align-items:center;text-decoration:none;color:var(--navy);flex:none;min-height:44px}
-.logo svg{height:34px;width:auto;display:block}
+.logo img{height:40px;width:auto;display:block}
 .nav__links{display:none;list-style:none;margin:0;padding:0;gap:2px;align-items:center}
 .nav__links a{display:block;padding:10px 12px;border-radius:10px;font:600 .92rem/1 var(--font-title);color:var(--ink);text-decoration:none}
 .nav__links a:hover{background:var(--mist);color:var(--green-d)}
@@ -120,24 +125,24 @@ a{color:inherit}
 .menu a:not(.btn):hover{color:var(--green-d)}
 
 /* Hero */
-.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--mist),#fff 85%);padding-top:36px;padding-bottom:84px}
-.hero__grid{display:grid;gap:36px;position:relative;z-index:2}
+.hero{position:relative;overflow:hidden;background:var(--navy);color:#fff}
+.hero__bg{position:relative;aspect-ratio:16/10;margin:0}
+.hero__bg img{width:100%;height:100%;object-fit:cover;object-position:75% center;display:block}
+.hero__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,59,90,0) 40%,var(--navy) 100%)}
+.hero__grid{position:relative;z-index:2;display:grid;gap:22px;padding-bottom:96px;margin-top:-40px}
 .hero__copy{display:grid;gap:22px;align-content:center}
-.hero__copy .lead{font-size:1.15rem;color:var(--ink)}
+.hero h1{color:#fff}
+.hero .eyebrow{color:var(--lime);margin-bottom:0;line-height:1.35}
+.hero__copy .lead{font-size:1.15rem;color:#E3EEF4}
 .hero__actions{display:flex;flex-wrap:wrap;gap:12px}
 .hero__trust{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:10px;font-size:.98rem;font-weight:500}
 .hero__trust li{display:flex;gap:10px;align-items:flex-start}
-.hero__trust .i{color:var(--green);width:1.3em;height:1.3em;margin-top:2px}
-.hero__media{position:relative;max-width:560px;width:100%;justify-self:center}
-.photo-slot{position:relative;aspect-ratio:4/4.4;border-radius:var(--r-lg);overflow:hidden;background:linear-gradient(165deg,#dff0e6,#c5e4d3 45%,#a9d7bd);box-shadow:var(--shadow)}
-.photo-slot svg.scene{position:absolute;inset:0;width:100%;height:100%}
-.photo-slot img{width:100%;height:100%;object-fit:cover;display:block}
-.slot-tag{position:absolute;left:14px;top:14px;background:rgba(255,255,255,.92);color:var(--muted);font:600 .72rem/1.2 var(--font-body);padding:6px 10px;border-radius:999px;border:1px dashed var(--muted)}
-.float-card{position:absolute;left:-6px;bottom:22px;display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:12px 16px 12px 12px;box-shadow:var(--shadow);max-width:calc(100% - 12px)}
+.hero__trust .i{color:var(--lime);width:1.3em;height:1.3em;margin-top:2px}
+.float-card{display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:12px 16px 12px 12px;box-shadow:var(--shadow);width:fit-content;max-width:100%}
 .float-card__ic{width:42px;height:42px;border-radius:50%;background:var(--green-d);color:#fff;display:grid;place-items:center;flex:none}
 .float-card__ic .i{width:24px;height:24px}
 .float-card b{display:block;font:800 .95rem/1.2 var(--font-title);color:var(--navy)}
-.float-card span{font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:6px}
+.float-card div span{font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:6px}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block}
 .hero__wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:90px;z-index:1;pointer-events:none}
 
@@ -170,17 +175,17 @@ a{color:inherit}
 
 /* Hogares / Empresas */
 .split{display:grid;gap:20px}
-.big{border-radius:var(--r-lg);padding:32px 26px;display:flex;flex-direction:column;gap:18px;position:relative;overflow:hidden}
-.big--home{background:#fff;box-shadow:var(--shadow);border:1px solid var(--line)}
-.big--biz{background:var(--navy);color:#fff}
-.big--biz h3{color:#fff}.big--biz p{color:#CFE0EA}
-.big h3{font-size:1.6rem}
+.big{--tone:#053A26;border-radius:var(--r-lg);padding:calc(75% - 70px) 26px 32px;display:flex;flex-direction:column;gap:18px;position:relative;overflow:hidden;color:#fff;isolation:isolate;background:var(--tone)}
+.big--biz{--tone:#06324D}
+.big__bg{position:absolute;inset:0 0 auto 0;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;z-index:-2}
+.big::after{content:"";position:absolute;inset:0 0 auto 0;aspect-ratio:4/3;z-index:-1;background:linear-gradient(180deg,transparent 0%,transparent 40%,var(--tone) 98%)}
+.big h3{font-size:1.6rem;color:#fff}
+.big p{color:#E3EEF4}
 .big ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
 .big li{display:flex;gap:10px;align-items:flex-start;font-weight:500}
-.big li .i{width:1.3em;height:1.3em;color:var(--green);margin-top:3px}
-.big--biz li .i{color:var(--lime)}
+.big li .i{width:1.3em;height:1.3em;color:var(--lime);margin-top:3px}
+.big .hand{color:var(--lime)}
 .big .btn{align-self:flex-start;margin-top:auto}
-.big .curve{position:absolute;right:-40px;bottom:-30px;width:220px;opacity:.9;pointer-events:none}
 
 /* Servicios */
 .svc{gap:10px}
@@ -274,7 +279,7 @@ a{color:inherit}
 .footer ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
 .footer a{color:#CFE0EA;text-decoration:none;display:inline-block;padding:7px 0;min-height:36px}
 .footer a:hover{color:var(--lime);text-decoration:underline}
-.footer .logo{color:#fff}
+.logo--chip{background:#fff;border-radius:14px;padding:8px 14px;align-self:flex-start;width:fit-content}
 .footer__brand{display:grid;gap:16px;max-width:380px}
 .footer__legal{margin-top:36px;padding-top:22px;border-top:1px solid rgba(255,255,255,.15);display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;font-size:.88rem}
 .footer .pending{background:transparent;border-color:#9CC3D6;color:#CFE0EA}
@@ -315,10 +320,13 @@ dialog .btn{margin-top:18px}
 /* >= 900 */
 @media (min-width:900px){
   body{font-size:18px}
-  .hero{padding-top:56px;padding-bottom:110px}
-  .hero__grid{grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .hero{min-height:640px;display:flex;align-items:center}
+  .hero__bg{position:absolute;inset:0;aspect-ratio:auto}
+  .hero__bg img{object-position:right center}
+  .hero__bg::after{background:linear-gradient(90deg,var(--navy) 0%,rgba(7,59,90,.94) 34%,rgba(7,59,90,.6) 52%,rgba(7,59,90,0) 72%)}
+  .hero__grid{margin-top:0;padding-top:72px;padding-bottom:120px;grid-template-columns:minmax(0,640px)}
   .split{grid-template-columns:1fr 1fr}
-  .big{padding:44px 40px}
+  .big{padding:calc(75% - 60px) 40px 44px}
   .grid.c3{grid-template-columns:repeat(3,1fr)}
   .grid.c4{grid-template-columns:repeat(4,1fr)}
   .steps{grid-template-columns:repeat(4,1fr)}
@@ -381,9 +389,8 @@ dialog .btn{margin-top:18px}
 <!-- ===== HEADER ===== -->
 <header class="nav" id="nav" data-8b-section="navigation">
   <div class="wrap nav__bar">
-    <a class="logo" href="#inicio" aria-label="CAPEST, ir al inicio" data-8b-placeholder="logo">
-      <!-- Reemplazar por el logotipo oficial (SVG/WebP) conservando proporciones: <img src="assets/logo-capest.svg" alt="CAPEST" height="34"> -->
-      <svg viewBox="0 0 150 34" role="img" aria-label="CAPEST"><text x="0" y="26" font-family="Plus Jakarta Sans,Montserrat,Arial,sans-serif" font-weight="800" font-size="28" letter-spacing="1" fill="#073B5A">CAP<tspan fill="#149447">EST</tspan></text></svg>
+    <a class="logo" href="#inicio" aria-label="CAPEST, ir al inicio" >
+      <img src="assets/logo-capest.webp" alt="CAPEST" width="120" height="40">
     </a>
     <nav aria-label="Principal">
       <ul class="nav__links">
@@ -420,6 +427,10 @@ dialog .btn{margin-top:18px}
 <main id="contenido">
 <!-- ===== HERO ===== -->
 <section class="hero" id="inicio" data-8b-section="hero" aria-labelledby="hero-title">
+  <picture class="hero__bg">
+    <source media="(min-width:900px)" srcset="assets/hero.webp" type="image/webp">
+    <img src="assets/hero-m.webp" width="900" height="900" alt="Técnico de CAPEST con uniforme azul marino aplicando un tratamiento en el jardín de una vivienda moderna" fetchpriority="high">
+  </picture>
   <div class="wrap hero__grid">
     <div class="hero__copy reveal">
       <span class="eyebrow">Control de plagas y sanitización en Chile</span>
@@ -427,7 +438,7 @@ dialog .btn{margin-top:18px}
       <p class="lead">Control profesional de insectos y sanitización para crear ambientes más sanos, seguros y libres de plagas.</p>
       <div class="hero__actions">
         <a class="btn btn-lime" data-wa data-wa-msg="Hola, quiero solicitar una evaluación para control de plagas." href="https://wa.me/56968317150" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Solicitar evaluación</a>
-        <a class="btn btn-line" href="#servicios">Ver servicios</a>
+        <a class="btn btn-line-w" href="#servicios">Ver servicios</a>
       </div>
       <ul class="hero__trust">
         <li><svg class="i"><use href="#i-check"/></svg>Atención para hogares y empresas</li>
@@ -435,32 +446,6 @@ dialog .btn{margin-top:18px}
         <li><svg class="i"><use href="#i-check"/></svg>Servicios mensuales y trimestrales</li>
         <li><svg class="i"><use href="#i-check"/></svg>Empresa autorizada por la SEREMI de Salud</li>
       </ul>
-    </div>
-    <div class="hero__media reveal">
-      <div class="photo-slot" data-8b-placeholder="photo-hero">
-        <!--
-          Reemplazar por fotografía real (técnico CAPEST con uniforme azul marino trabajando en el exterior de una vivienda moderna):
-          <picture><source srcset="assets/hero.avif" type="image/avif"><source srcset="assets/hero.webp" type="image/webp">
-          <img src="assets/hero.jpg" width="1120" height="1230" alt="Técnico de CAPEST aplicando un tratamiento en el exterior de una vivienda" fetchpriority="high"></picture>
-        -->
-        <svg class="scene" viewBox="0 0 400 440" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustración provisoria de una vivienda moderna protegida">
-          <circle cx="320" cy="70" r="34" fill="#fff" opacity=".7"/>
-          <path d="M0 330c70-40 140-30 210-10s130 10 190-20v140H0Z" fill="#149447" opacity=".35"/>
-          <path d="M0 360c80-30 150-20 220 0s120 10 180-10v90H0Z" fill="#087A39" opacity=".55"/>
-          <g transform="translate(70 150)">
-            <rect x="0" y="60" width="200" height="120" rx="6" fill="#fff"/>
-            <path d="M-12 66 100 4l112 62Z" fill="#073B5A"/>
-            <rect x="120" y="86" width="56" height="94" rx="3" fill="#073B5A" opacity=".9"/>
-            <rect x="22" y="92" width="72" height="52" rx="4" fill="#bfe0ee"/>
-            <path d="M58 92v52M22 118h72" stroke="#fff" stroke-width="3"/>
-          </g>
-          <g transform="translate(278 238)" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M0-30 36-16v26c0 24-16 40-36 48-20-8-36-24-36-48v-26Z" fill="#149447"/>
-            <path d="m-14 6 10 10 20-22"/>
-          </g>
-        </svg>
-        <span class="slot-tag">Imagen provisoria · reemplazar por foto real</span>
-      </div>
       <div class="float-card">
         <span class="float-card__ic"><svg class="i"><use href="#i-wa"/></svg></span>
         <div><b>Respuesta rápida por WhatsApp</b><span><i class="dot"></i>Cotiza sin compromiso</span></div>
@@ -515,6 +500,7 @@ dialog .btn{margin-top:18px}
     </div>
     <div class="split">
       <article class="big big--home reveal" id="hogares">
+        <img class="big__bg" src="assets/hogares.webp" width="1000" height="750" loading="lazy" alt="Técnico de CAPEST aplicando un tratamiento en el jardín de una vivienda moderna">
         <span class="ic-circle"><svg class="i"><use href="#i-homeshield"/></svg></span>
         <h3>Protección para tu hogar</h3>
         <p>Tratamientos diseñados para proteger a tu familia, tus mascotas y cada espacio de tu vivienda.</p>
@@ -526,10 +512,10 @@ dialog .btn{margin-top:18px}
           <li><svg class="i"><use href="#i-check"/></svg>Seguimiento programado</li>
         </ul>
         <span class="hand">Tu tranquilidad es nuestra prioridad</span>
-        <a class="btn btn-green" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas para mi hogar." href="https://wa.me/56968317150" target="_blank" rel="noopener">Solicitar servicio para mi hogar</a>
+        <a class="btn btn-lime" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas para mi hogar." href="https://wa.me/56968317150" target="_blank" rel="noopener">Solicitar servicio para mi hogar</a>
       </article>
       <article class="big big--biz reveal" id="empresas">
-        <svg class="curve" viewBox="0 0 220 160" aria-hidden="true"><path d="M0 150C40 60 120 20 220 30v130Z" fill="#149447" opacity=".55"/><path d="M60 160C90 100 150 70 220 78v82Z" fill="#75D52B" opacity=".5"/></svg>
+        <img class="big__bg" src="assets/empresas.webp" width="1000" height="750" loading="lazy" alt="Técnico de CAPEST aplicando un tratamiento de control de plagas en una oficina moderna">
         <span class="ic-circle" style="background:var(--lime);color:var(--navy)"><svg class="i"><use href="#i-building"/></svg></span>
         <h3>Control profesional para empresas</h3>
         <p>Planes de control y seguimiento para mantener instalaciones seguras, higiénicas y operativas. Protege a tu hogar y a tus trabajadores.</p>
@@ -761,7 +747,7 @@ dialog .btn{margin-top:18px}
   <div class="wrap">
     <div class="footer__grid">
       <div class="footer__brand">
-        <a class="logo" href="#inicio" aria-label="CAPEST, ir al inicio"><svg viewBox="0 0 150 34" role="img" aria-label="CAPEST"><text x="0" y="26" font-family="Plus Jakarta Sans,Montserrat,Arial,sans-serif" font-weight="800" font-size="28" letter-spacing="1" fill="#fff">CAP<tspan fill="#75D52B">EST</tspan></text></svg></a>
+        <a class="logo logo--chip" href="#inicio" aria-label="CAPEST, ir al inicio"><img src="assets/logo-capest.webp" alt="CAPEST" width="120" height="40" loading="lazy"></a>
         <p>Control profesional de plagas y sanitización para hogares y empresas. Ambientes más sanos, seguros y libres de plagas.</p>
         <span class="hand" style="color:var(--lime)">Tu tranquilidad es nuestra prioridad</span>
         <div class="social" id="social" hidden></div>
