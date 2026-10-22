@@ -1,0 +1,938 @@
+<!doctype html>
+<!--
+  CAPEST — sitio web corporativo. Basado en la estructura de plantilla de https://github.com/8bsite/app-landing-page-template (MIT, ver ../LICENSE).
+  Un solo archivo, sin build. Datos editables: objeto CAPEST_CONFIG al final del archivo y elementos con data-8b-placeholder.
+  ANTES DE PUBLICAR: confirmar con CAPEST todos los datos legales, sanitarios y comerciales (ver lista en README-CAPEST.md).
+-->
+<html lang="es-CL">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>CAPEST | Control de plagas y sanitización para hogares y empresas</title>
+<meta name="description" content="Control profesional de plagas y sanitización para hogares, oficinas y empresas. Personal capacitado, atención programada y cotización directa por WhatsApp.">
+<meta name="keywords" content="control de plagas Chile, control de plagas Santiago, fumigación para hogares, control de insectos, sanitización de oficinas, control de plagas para empresas">
+<meta name="generator" content="8B Templates">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://dominio-por-confirmar.cl/" data-8b-placeholder="canonical">
+<meta name="theme-color" content="#073B5A">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
+<meta property="og:site_name" content="CAPEST">
+<meta property="og:title" content="CAPEST | Control de plagas y sanitización para hogares y empresas">
+<meta property="og:description" content="Control profesional de plagas y sanitización para hogares, oficinas y empresas. Personal capacitado, atención programada y cotización directa por WhatsApp.">
+<meta property="og:image" content="https://dominio-por-confirmar.cl/assets/og-capest.png" data-8b-placeholder="og-image">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23073B5A'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='800' font-size='36' text-anchor='middle' fill='%2375D52B'%3EC%3C/text%3E%3C/svg%3E" data-8b-placeholder="favicon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "CAPEST",
+  "description": "Control profesional de plagas y sanitización para hogares, oficinas y empresas en Chile.",
+  "telephone": "+56968317150",
+  "areaServed": { "@type": "Country", "name": "Chile" },
+  "serviceType": ["Control de plagas", "Control de insectos", "Sanitización de espacios"],
+  "url": "https://dominio-por-confirmar.cl/"
+}
+</script>
+<!-- FAQPage JSON-LD: agregar solo cuando CAPEST confirme las respuestas (ver CAPEST_CONFIG.faqConfirmed). -->
+<style>
+/* Concepto: hojas superpuestas con esquinas superiores redondeadas (estructura de la plantilla), azul marino y verde de CAPEST, ondas verdes inspiradas en las hojas del logotipo. */
+:root{
+  --navy:#073B5A; --green:#149447; --lime:#75D52B; --green-d:#087A39; --white:#fff;
+  --mist:#F3F7F5; --ink:#102F3D; --red:#E32626; --muted:#3F5F6E; --line:#D7E4DD;
+  --shadow:0 12px 32px rgba(7,59,90,.09); --shadow-sm:0 4px 14px rgba(7,59,90,.07);
+  --r:20px; --r-lg:32px;
+  --font-title:'Plus Jakarta Sans','Montserrat',system-ui,sans-serif;
+  --font-body:'Inter','Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-hand:'Caveat','Segoe Print',cursive;
+  --header-h:68px;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--white);color:var(--ink);font:400 17px/1.6 var(--font-body);-webkit-text-size-adjust:100%;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--white)}
+img,svg{max-width:100%}
+h1,h2,h3{font-family:var(--font-title);font-weight:800;line-height:1.12;margin:0;text-wrap:balance;color:var(--navy);letter-spacing:-.01em}
+h1{font-size:clamp(2.1rem,7.4vw,3.6rem)}
+h2{font-size:clamp(1.75rem,5.2vw,2.6rem)}
+h3{font-size:1.2rem;line-height:1.25}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px;border-radius:6px}
+.on-dark :focus-visible,.band-dark :focus-visible{outline-color:var(--lime)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--navy);color:#fff;padding:10px 16px;border-radius:10px}
+.skip:focus{top:calc(env(safe-area-inset-top,0px) + 8px)}
+.wrap{width:100%;max-width:1200px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.i{width:1.5em;height:1.5em;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.i-fill{fill:currentColor;stroke:none}
+.eyebrow{display:inline-block;font:700 .8rem/1 var(--font-title);letter-spacing:.12em;text-transform:uppercase;color:var(--green-d);margin-bottom:14px}
+.band-dark .eyebrow{color:var(--lime)}
+.lead{font-size:1.1rem;color:var(--muted);max-width:62ch}
+.hand{font-family:var(--font-hand);font-weight:600;font-size:1.7rem;line-height:1.1;color:var(--green-d)}
+.band-dark .hand{color:var(--lime)}
+.sec-head{display:grid;gap:14px;margin-bottom:40px;max-width:760px}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 24px;border-radius:999px;border:2px solid transparent;font:700 1rem/1.2 var(--font-title);text-decoration:none;cursor:pointer;transition:transform .18s,box-shadow .18s,background-color .18s,color .18s,border-color .18s;text-align:center}
+.btn .i{width:1.25em;height:1.25em}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn-lime{background:var(--lime);color:var(--navy);box-shadow:0 8px 20px rgba(117,213,43,.35)}
+.btn-lime:hover{background:#86e43b;box-shadow:0 12px 26px rgba(117,213,43,.45)}
+.btn-green{background:var(--green-d);color:#fff}
+.btn-green:hover{background:var(--navy)}
+.btn-line{background:#fff;color:var(--navy);border-color:var(--navy)}
+.btn-line:hover{background:var(--navy);color:#fff}
+.btn-line-w{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+.btn-line-w:hover{background:#fff;color:var(--navy)}
+.btn-sm{min-height:44px;padding:10px 18px;font-size:.95rem}
+.btn-block{width:100%}
+.link-arrow{display:inline-flex;align-items:center;gap:8px;font:700 .95rem/1.3 var(--font-title);color:var(--green-d);text-decoration:none;min-height:44px}
+.link-arrow:hover{color:var(--navy);text-decoration:underline}
+.link-arrow .i{width:1.1em;height:1.1em;transition:transform .18s}
+.link-arrow:hover .i{transform:translateX(3px)}
+
+/* Header */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--white);border-bottom:1px solid var(--line)}
+.nav__bar{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:var(--header-h)}
+.logo{display:inline-flex;align-items:center;text-decoration:none;color:var(--navy);flex:none;min-height:44px}
+.logo svg{height:34px;width:auto;display:block}
+.nav__links{display:none;list-style:none;margin:0;padding:0;gap:2px;align-items:center}
+.nav__links a{display:block;padding:10px 12px;border-radius:10px;font:600 .92rem/1 var(--font-title);color:var(--ink);text-decoration:none}
+.nav__links a:hover{background:var(--mist);color:var(--green-d)}
+.nav__right{display:flex;align-items:center;gap:10px}
+.nav__cta{display:none}
+.nav__toggle{width:48px;height:48px;border-radius:12px;border:1px solid var(--line);background:#fff;display:grid;place-items:center;cursor:pointer;color:var(--navy)}
+.nav__toggle .i{width:26px;height:26px}
+.menu{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow);padding:10px max(16px,env(safe-area-inset-left,0px)) 20px}
+.menu ul{list-style:none;margin:0 0 14px;padding:0}
+.menu a:not(.btn){display:block;padding:14px 4px;border-bottom:1px solid var(--line);font:700 1.05rem/1.2 var(--font-title);text-decoration:none;color:var(--navy)}
+.menu a:not(.btn):hover{color:var(--green-d)}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,var(--mist),#fff 85%);padding-top:36px;padding-bottom:84px}
+.hero__grid{display:grid;gap:36px;position:relative;z-index:2}
+.hero__copy{display:grid;gap:22px;align-content:center}
+.hero__copy .lead{font-size:1.15rem;color:var(--ink)}
+.hero__actions{display:flex;flex-wrap:wrap;gap:12px}
+.hero__trust{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:10px;font-size:.98rem;font-weight:500}
+.hero__trust li{display:flex;gap:10px;align-items:flex-start}
+.hero__trust .i{color:var(--green);width:1.3em;height:1.3em;margin-top:2px}
+.hero__media{position:relative;max-width:560px;width:100%;justify-self:center}
+.photo-slot{position:relative;aspect-ratio:4/4.4;border-radius:var(--r-lg);overflow:hidden;background:linear-gradient(165deg,#dff0e6,#c5e4d3 45%,#a9d7bd);box-shadow:var(--shadow)}
+.photo-slot svg.scene{position:absolute;inset:0;width:100%;height:100%}
+.photo-slot img{width:100%;height:100%;object-fit:cover;display:block}
+.slot-tag{position:absolute;left:14px;top:14px;background:rgba(255,255,255,.92);color:var(--muted);font:600 .72rem/1.2 var(--font-body);padding:6px 10px;border-radius:999px;border:1px dashed var(--muted)}
+.float-card{position:absolute;left:-6px;bottom:22px;display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:12px 16px 12px 12px;box-shadow:var(--shadow);max-width:calc(100% - 12px)}
+.float-card__ic{width:42px;height:42px;border-radius:50%;background:var(--green-d);color:#fff;display:grid;place-items:center;flex:none}
+.float-card__ic .i{width:24px;height:24px}
+.float-card b{display:block;font:800 .95rem/1.2 var(--font-title);color:var(--navy)}
+.float-card span{font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:6px}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block}
+.hero__wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:90px;z-index:1;pointer-events:none}
+
+/* Hojas */
+.sheet{position:relative;border-radius:var(--r-lg) var(--r-lg) 0 0;margin-top:calc(var(--r-lg) * -1);padding-top:calc(var(--r-lg) + 56px);padding-bottom:72px}
+.bg-white{background:#fff}.bg-mist{background:var(--mist)}.band-dark{background:var(--navy);color:#fff}
+.band-dark h2,.band-dark h3{color:#fff}
+.band-dark .lead{color:#CFE0EA}
+
+/* Banda de confianza */
+.trust{position:relative;z-index:3;margin-top:-52px;padding-bottom:40px}
+.trust__card{background:#fff;border-radius:var(--r-lg);box-shadow:var(--shadow);padding:22px 20px;display:grid;gap:18px;grid-template-columns:1fr 1fr}
+.trust__item{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.ic-circle{width:52px;height:52px;border-radius:50%;background:var(--green-d);color:#fff;display:grid;place-items:center;flex:none}
+.ic-circle .i{width:28px;height:28px}
+.ic-soft{background:#E4F3EA;color:var(--green-d)}
+.trust__item b{font:800 1rem/1.25 var(--font-title);color:var(--navy)}
+
+/* Tarjetas genéricas */
+.grid{display:grid;gap:18px}
+.card{background:#fff;border-radius:var(--r);padding:24px;box-shadow:var(--shadow-sm);border:1px solid var(--line);display:flex;flex-direction:column;gap:12px;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.card p{color:var(--muted);font-size:.98rem}
+.card .link-arrow{margin-top:auto}
+.pest .ic-circle{width:60px;height:60px}
+.pest .ic-circle .i{width:34px;height:34px}
+.pest .warn{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;color:var(--muted)}
+.pest .warn svg{width:14px;height:14px;fill:none;stroke:var(--red);stroke-width:3;stroke-linecap:round}
+.pests-note{margin-top:28px;font-size:.92rem;color:var(--muted)}
+
+/* Hogares / Empresas */
+.split{display:grid;gap:20px}
+.big{border-radius:var(--r-lg);padding:32px 26px;display:flex;flex-direction:column;gap:18px;position:relative;overflow:hidden}
+.big--home{background:#fff;box-shadow:var(--shadow);border:1px solid var(--line)}
+.big--biz{background:var(--navy);color:#fff}
+.big--biz h3{color:#fff}.big--biz p{color:#CFE0EA}
+.big h3{font-size:1.6rem}
+.big ul{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.big li{display:flex;gap:10px;align-items:flex-start;font-weight:500}
+.big li .i{width:1.3em;height:1.3em;color:var(--green);margin-top:3px}
+.big--biz li .i{color:var(--lime)}
+.big .btn{align-self:flex-start;margin-top:auto}
+.big .curve{position:absolute;right:-40px;bottom:-30px;width:220px;opacity:.9;pointer-events:none}
+
+/* Servicios */
+.svc{gap:10px}
+.svc h3{font-size:1.1rem}
+.svc--extra{border-style:dashed;background:transparent;box-shadow:none}
+
+/* Proceso */
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:16px;counter-reset:s}
+.step{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);border-radius:var(--r);padding:24px;display:grid;gap:10px;counter-increment:s}
+.step::before{content:counter(s);width:44px;height:44px;border-radius:50%;background:var(--lime);color:var(--navy);display:grid;place-items:center;font:800 1.2rem/1 var(--font-title)}
+.step p{color:#CFE0EA;font-size:.98rem}
+.factors{margin-top:36px;padding:24px;border-radius:var(--r);background:rgba(117,213,43,.1);border:1px solid rgba(117,213,43,.35);display:grid;gap:14px}
+.factors ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px}
+.factors li{padding:8px 14px;border-radius:999px;background:rgba(255,255,255,.1);font-weight:600;font-size:.95rem}
+
+/* Planes */
+.plan{padding:28px 24px}
+.plan .tag{align-self:flex-start;background:var(--lime);color:var(--navy);font:800 .75rem/1 var(--font-title);letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border-radius:999px}
+.plan--rec{border:2px solid var(--green);box-shadow:var(--shadow)}
+.plan ul{list-style:none;margin:6px 0 10px;padding:0;display:grid;gap:10px}
+.plan li{display:flex;gap:10px;align-items:flex-start;font-size:.98rem}
+.plan li .i{width:1.25em;height:1.25em;color:var(--green);margin-top:3px}
+.price{font:800 1.05rem/1.3 var(--font-title);color:var(--navy);padding:12px 14px;background:var(--mist);border-radius:12px}
+.plan .btn{margin-top:auto}
+
+/* Por qué CAPEST */
+.why{display:grid;gap:36px}
+.why__list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.why__list li{display:flex;gap:14px;align-items:flex-start;font-weight:500}
+.why__list .ic-circle{width:40px;height:40px}
+.why__list .ic-circle .i{width:22px;height:22px}
+.facts{background:var(--mist);border-radius:var(--r-lg);padding:26px;display:grid;gap:4px;align-content:start}
+.facts h3{margin-bottom:10px}
+.fact{display:flex;flex-direction:column;gap:2px;padding:12px 0;border-bottom:1px solid var(--line)}
+.fact:last-child{border-bottom:0}
+.fact dt{font:700 .78rem/1.2 var(--font-title);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.fact dd{margin:0;font-weight:600;color:var(--navy)}
+.pending{display:inline-block;background:#fff;border:1px dashed var(--muted);color:var(--muted);border-radius:8px;padding:2px 10px;font-size:.88rem;font-weight:500}
+
+/* CTA */
+.cta{position:relative;overflow:hidden}
+.cta__in{position:relative;z-index:2;display:grid;gap:22px;max-width:680px}
+.cta svg.waves{position:absolute;right:-60px;bottom:-20px;width:min(620px,120%);z-index:1;opacity:.95;pointer-events:none}
+
+/* Testimonios */
+.quote{gap:14px}
+.quote blockquote{margin:0;font-size:1.05rem;color:var(--ink)}
+.quote footer{font-size:.9rem;color:var(--muted)}
+
+/* FAQ */
+.faq{display:grid;gap:12px;max-width:860px}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow-sm)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:16px;align-items:center;padding:18px 20px;min-height:56px;font:700 1.02rem/1.3 var(--font-title);color:var(--navy);border-radius:var(--r)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";width:12px;height:12px;border-right:3px solid var(--green-d);border-bottom:3px solid var(--green-d);transform:rotate(45deg) translate(-2px,-2px);transition:transform .2s;flex:none}
+.faq details[open] summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
+.faq .ans{padding:0 20px 20px;color:var(--muted);display:grid;gap:10px}
+
+/* Contacto */
+.contact{display:grid;gap:28px}
+.formcard{background:#fff;border-radius:var(--r-lg);padding:26px 20px;box-shadow:var(--shadow);border:1px solid var(--line)}
+.form{display:grid;gap:16px;grid-template-columns:1fr}
+.field{display:grid;gap:6px;min-width:0}
+.field label{font-weight:600;font-size:.95rem;color:var(--navy)}
+.field label small{font-weight:400;color:var(--muted)}
+.field input,.field select,.field textarea{width:100%;min-height:50px;padding:12px 14px;border:1.5px solid #8FA7B2;border-radius:12px;background:#fff;color:var(--ink);font:400 1rem/1.4 var(--font-body)}
+.field textarea{min-height:120px;resize:vertical}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:var(--navy)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:3px solid var(--lime);outline-offset:1px;border-color:var(--navy)}
+.field [aria-invalid="true"]{border-color:var(--red);background:#FFF6F6}
+.err{display:none;color:#B01919;font-size:.88rem;font-weight:600}
+.field.has-err .err{display:block}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.form__status{padding:14px 16px;border-radius:12px;font-weight:500;display:none}
+.form__status.ok{display:grid;gap:12px;background:#E8F6EC;border:1px solid var(--green)}
+.form__status.bad{display:block;background:#FFF1F1;border:1px solid var(--red);color:#8E1212}
+.info{background:var(--navy);color:#fff;border-radius:var(--r-lg);padding:28px 24px;display:grid;gap:20px;align-content:start}
+.info h3{color:#fff;font-size:1.4rem}
+.info ul{list-style:none;margin:0;padding:0;display:grid;gap:18px}
+.info li{display:flex;gap:14px;align-items:flex-start}
+.info li .ic-circle{width:44px;height:44px;background:rgba(117,213,43,.18);color:var(--lime)}
+.info li .ic-circle .i{width:24px;height:24px}
+.info small{display:block;font:700 .75rem/1.2 var(--font-title);letter-spacing:.1em;text-transform:uppercase;color:#9CC3D6;margin-bottom:3px}
+.info .pending{background:transparent;border-color:#9CC3D6;color:#CFE0EA}
+.info a{text-decoration:none;font-weight:700}
+
+/* Footer */
+.footer{background:#052B42;color:#CFE0EA;padding-top:calc(var(--r-lg) + 48px);padding-bottom:110px;position:relative;margin-top:calc(var(--r-lg) * -1);border-radius:var(--r-lg) var(--r-lg) 0 0}
+.footer__grid{display:grid;gap:32px}
+.footer h3{font-size:1rem;color:#fff;margin-bottom:14px;letter-spacing:.02em}
+.footer ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.footer a{color:#CFE0EA;text-decoration:none;display:inline-block;padding:7px 0;min-height:36px}
+.footer a:hover{color:var(--lime);text-decoration:underline}
+.footer .logo{color:#fff}
+.footer__brand{display:grid;gap:16px;max-width:380px}
+.footer__legal{margin-top:36px;padding-top:22px;border-top:1px solid rgba(255,255,255,.15);display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;font-size:.88rem}
+.footer .pending{background:transparent;border-color:#9CC3D6;color:#CFE0EA}
+.social{display:flex;gap:10px;flex-wrap:wrap}
+.social a{padding:8px 14px;border:1px solid rgba(255,255,255,.3);border-radius:999px}
+
+/* Flotantes */
+.wa-float{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(76px + env(safe-area-inset-bottom,0px));z-index:55;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 8px 22px rgba(7,59,90,.28);transition:transform .18s}
+.wa-float:hover{transform:scale(1.07)}
+.wa-float .i{width:32px;height:32px}
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:56;background:#fff;border-top:1px solid var(--line);box-shadow:0 -6px 20px rgba(7,59,90,.1);display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px max(16px,env(safe-area-inset-right,0px)) calc(10px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px))}
+
+/* Modales */
+dialog{border:0;border-radius:var(--r);padding:28px;max-width:560px;width:calc(100% - 32px);box-shadow:var(--shadow);color:var(--ink)}
+dialog::backdrop{background:rgba(7,59,90,.55)}
+dialog h2{font-size:1.5rem;margin-bottom:12px}
+dialog .btn{margin-top:18px}
+
+/* Aparición suave */
+.js-anim .reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.js-anim .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms!important;animation:none!important}
+  .js-anim .reveal{opacity:1;transform:none}
+}
+
+/* >= 600 */
+@media (min-width:600px){
+  .trust__card{grid-template-columns:repeat(4,1fr);padding:28px}
+  .grid.c2,.grid.c3,.grid.c4{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:repeat(2,1fr)}
+  .form{grid-template-columns:1fr 1fr}
+  .form .full{grid-column:1/-1}
+  .hero__trust{grid-template-columns:1fr 1fr;gap:12px 24px}
+  .formcard{padding:34px}
+}
+/* >= 900 */
+@media (min-width:900px){
+  body{font-size:18px}
+  .hero{padding-top:56px;padding-bottom:110px}
+  .hero__grid{grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .split{grid-template-columns:1fr 1fr}
+  .big{padding:44px 40px}
+  .grid.c3{grid-template-columns:repeat(3,1fr)}
+  .grid.c4{grid-template-columns:repeat(4,1fr)}
+  .steps{grid-template-columns:repeat(4,1fr)}
+  .why{grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+  .contact{grid-template-columns:1.15fr .85fr;gap:32px;align-items:start}
+  .footer__grid{grid-template-columns:1.4fr 1fr 1fr 1.2fr}
+  .sheet{padding-bottom:96px}
+  .info{position:sticky;top:96px}
+}
+/* >= 1100: menú completo */
+@media (min-width:1100px){
+  .nav__links{display:flex}
+  .nav__cta{display:inline-flex}
+  .nav__toggle,.menu{display:none!important}
+}
+/* >= 900: barra inferior móvil se oculta, el botón flotante baja */
+@media (min-width:900px){
+  .mbar{display:none}
+  .wa-float{bottom:calc(24px + env(safe-area-inset-bottom,0px))}
+  .footer{padding-bottom:64px}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-spider" viewBox="0 0 48 48"><circle cx="24" cy="28" r="7"/><circle cx="24" cy="17" r="4"/><path d="M17.5 26 9 20l-4 4M17 29l-9 2-3 6M18 33l-6 8M30.5 26 39 20l4 4M31 29l9 2 3 6M30 33l6 8"/></symbol>
+    <symbol id="i-mosquito" viewBox="0 0 48 48"><ellipse cx="24" cy="24" rx="4" ry="6"/><ellipse cx="24" cy="36" rx="3" ry="6"/><circle cx="24" cy="15" r="3"/><path d="M24 12V4M20 22c-10-8-12 2-2 4M28 22c10-8 12 2 2 4M20 26l-9 6M20 29l-8 11M28 26l9 6M28 29l8 11"/></symbol>
+    <symbol id="i-fly" viewBox="0 0 48 48"><ellipse cx="24" cy="29" rx="6" ry="9"/><circle cx="24" cy="15" r="4"/><path d="M19 25C8 19 6 31 17 34M29 25c11-6 13 6 2 9M19 34l-7 7M29 34l7 7"/></symbol>
+    <symbol id="i-flea" viewBox="0 0 48 48"><ellipse cx="24" cy="26" rx="12" ry="8"/><circle cx="38" cy="22" r="3"/><path d="M14 31 8 22 4 36M22 34l-2 8M28 34l2 8M40 20l4-6"/></symbol>
+    <symbol id="i-tick" viewBox="0 0 48 48"><circle cx="24" cy="28" r="10"/><circle cx="24" cy="14" r="3.5"/><path d="M15 24 7 20M14 29l-8 1M16 35l-7 5M33 24l8-4M34 29l8 1M32 35l7 5"/></symbol>
+    <symbol id="i-ant" viewBox="0 0 48 48"><circle cx="24" cy="11" r="4"/><ellipse cx="24" cy="23" rx="4" ry="5"/><ellipse cx="24" cy="37" rx="5.5" ry="7"/><path d="M22 8l-5-6M26 8l5-6M20 22l-9-4M20 26l-10 3M28 22l9-4M28 26l10 3M21 30l-9 8"/></symbol>
+    <symbol id="i-roach" viewBox="0 0 48 48"><ellipse cx="24" cy="29" rx="9" ry="13"/><circle cx="24" cy="12" r="4"/><path d="M22 9 14 3M26 9l8-6M15 22l-8-4M15 28l-9 1M16 35l-7 6M33 22l8-4M33 28l9 1M32 35l7 6M24 16v26"/></symbol>
+    <symbol id="i-rodent" viewBox="0 0 48 48"><path d="M8 32c0-10 12-14 20-12 6 1 10 5 12 9l4 1-4 3c-2 3-8 5-14 5H14c-4 0-6-3-6-6Z"/><circle cx="31" cy="25" r="2"/><circle cx="25" cy="18" r="3.5"/><path d="M8 33c-4 0-5 7 0 9"/></symbol>
+    <symbol id="i-magnify" viewBox="0 0 48 48"><circle cx="21" cy="21" r="11"/><path d="m29 29 11 11M21 16v10M16 21h10"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 48 48"><path d="M24 4l16 6v12c0 11-7 18-16 22-9-4-16-11-16-22V10Z"/><path d="m16 24 6 6 10-12"/></symbol>
+    <symbol id="i-spray" viewBox="0 0 48 48"><rect x="14" y="20" width="16" height="24" rx="3"/><path d="M18 20v-6h10l4-4M34 12h6M35 17l5 2M35 7l5-2"/></symbol>
+    <symbol id="i-sparkle" viewBox="0 0 48 48"><path d="m20 8 3 10 10 3-10 3-3 10-3-10-10-3 10-3ZM36 28l2 5 5 2-5 2-2 5-2-5-5-2 5-2Z"/></symbol>
+    <symbol id="i-clip" viewBox="0 0 48 48"><rect x="10" y="8" width="28" height="34" rx="4"/><path d="M18 8V5h12v3M16 20h16M16 27h16M16 34h10"/></symbol>
+    <symbol id="i-building" viewBox="0 0 48 48"><rect x="10" y="6" width="22" height="36" rx="2"/><path d="M32 18h8v24h-8M16 14h4M16 22h4M16 30h4M24 14h2M24 22h2M24 30h2M18 42v-6h6v6"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 48 48"><rect x="6" y="10" width="36" height="32" rx="4"/><path d="M6 20h36M15 5v9M33 5v9M16 29h4M24 29h4M16 35h4M24 35h4"/></symbol>
+    <symbol id="i-repeat" viewBox="0 0 48 48"><path d="M38 20A14 14 0 0 0 12 16M10 8v8h8M10 28a14 14 0 0 0 26 4M38 40v-8h-8"/></symbol>
+    <symbol id="i-homeshield" viewBox="0 0 48 48"><path d="M6 22 24 6l18 16M10 20v20h28V20"/><path d="m18 29 4 4 8-9"/></symbol>
+    <symbol id="i-person" viewBox="0 0 48 48"><circle cx="24" cy="15" r="7"/><path d="M10 42c0-11 28-11 28 0"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 48 48"><path d="M8 40C8 18 22 8 42 8c0 20-10 32-28 32M8 40l18-18"/></symbol>
+    <symbol id="i-check" viewBox="0 0 48 48"><path d="m12 25 9 9 16-18"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 48 48"><path d="M8 24h32M28 12l12 12-12 12"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 48 48"><path d="M12 6h8l3 10-5 3c3 7 7 11 14 14l3-5 9 3v7c0 3-3 6-6 6C20 43 5 28 4 10c0-2 4-4 8-4Z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><path d="M24 13v11l8 5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 48 48"><rect x="5" y="10" width="38" height="28" rx="4"/><path d="m6 13 18 14 18-14"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 48 48"><path d="M24 44C14 32 10 26 10 19 10 11 16 5 24 5s14 6 14 14c0 7-4 13-14 25Z"/><circle cx="24" cy="19" r="5"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 48 48"><path d="M8 14h32M8 24h32M8 34h32"/></symbol>
+    <symbol id="i-close" viewBox="0 0 48 48"><path d="m12 12 24 24M36 12 12 36"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 48 48"><path d="M24 4a20 20 0 1 1-10 37l-9 2 3-9A20 20 0 0 1 24 4Z"/><path class="i-fill" fill="currentColor" stroke="none" d="M17 15c-2 3 0 9 5 14s10 5 12 3l1-3-5-2-2 2c-3-1-7-5-8-8l2-2-2-5Z"/></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="#contenido">Saltar al contenido</a>
+
+<!-- ===== HEADER ===== -->
+<header class="nav" id="nav" data-8b-section="navigation">
+  <div class="wrap nav__bar">
+    <a class="logo" href="#inicio" aria-label="CAPEST, ir al inicio" data-8b-placeholder="logo">
+      <!-- Reemplazar por el logotipo oficial (SVG/WebP) conservando proporciones: <img src="assets/logo-capest.svg" alt="CAPEST" height="34"> -->
+      <svg viewBox="0 0 150 34" role="img" aria-label="CAPEST"><text x="0" y="26" font-family="Plus Jakarta Sans,Montserrat,Arial,sans-serif" font-weight="800" font-size="28" letter-spacing="1" fill="#073B5A">CAP<tspan fill="#149447">EST</tspan></text></svg>
+    </a>
+    <nav aria-label="Principal">
+      <ul class="nav__links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#hogares">Hogares</a></li>
+        <li><a href="#empresas">Empresas</a></li>
+        <li><a href="#planes">Planes</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <div class="nav__right">
+      <a class="btn btn-lime btn-sm nav__cta" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas." href="https://wa.me/56968317150" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Cotizar por WhatsApp</a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú"><svg class="i"><use href="#i-menu"/></svg></button>
+    </div>
+  </div>
+  <div class="menu" id="menu" hidden>
+    <ul>
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#hogares">Hogares</a></li>
+      <li><a href="#empresas">Empresas</a></li>
+      <li><a href="#planes">Planes</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+    <a class="btn btn-lime btn-block" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas." href="https://wa.me/56968317150" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Cotizar por WhatsApp</a>
+  </div>
+</header>
+
+<main id="contenido">
+<!-- ===== HERO ===== -->
+<section class="hero" id="inicio" data-8b-section="hero" aria-labelledby="hero-title">
+  <div class="wrap hero__grid">
+    <div class="hero__copy reveal">
+      <span class="eyebrow">Control de plagas y sanitización en Chile</span>
+      <h1 id="hero-title">Protegemos tu hogar y tu empresa de las plagas</h1>
+      <p class="lead">Control profesional de insectos y sanitización para crear ambientes más sanos, seguros y libres de plagas.</p>
+      <div class="hero__actions">
+        <a class="btn btn-lime" data-wa data-wa-msg="Hola, quiero solicitar una evaluación para control de plagas." href="https://wa.me/56968317150" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Solicitar evaluación</a>
+        <a class="btn btn-line" href="#servicios">Ver servicios</a>
+      </div>
+      <ul class="hero__trust">
+        <li><svg class="i"><use href="#i-check"/></svg>Atención para hogares y empresas</li>
+        <li><svg class="i"><use href="#i-check"/></svg>Personal capacitado</li>
+        <li><svg class="i"><use href="#i-check"/></svg>Servicios mensuales y trimestrales</li>
+        <li><svg class="i"><use href="#i-check"/></svg>Empresa autorizada por la SEREMI de Salud</li>
+      </ul>
+    </div>
+    <div class="hero__media reveal">
+      <div class="photo-slot" data-8b-placeholder="photo-hero">
+        <!--
+          Reemplazar por fotografía real (técnico CAPEST con uniforme azul marino trabajando en el exterior de una vivienda moderna):
+          <picture><source srcset="assets/hero.avif" type="image/avif"><source srcset="assets/hero.webp" type="image/webp">
+          <img src="assets/hero.jpg" width="1120" height="1230" alt="Técnico de CAPEST aplicando un tratamiento en el exterior de una vivienda" fetchpriority="high"></picture>
+        -->
+        <svg class="scene" viewBox="0 0 400 440" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Ilustración provisoria de una vivienda moderna protegida">
+          <circle cx="320" cy="70" r="34" fill="#fff" opacity=".7"/>
+          <path d="M0 330c70-40 140-30 210-10s130 10 190-20v140H0Z" fill="#149447" opacity=".35"/>
+          <path d="M0 360c80-30 150-20 220 0s120 10 180-10v90H0Z" fill="#087A39" opacity=".55"/>
+          <g transform="translate(70 150)">
+            <rect x="0" y="60" width="200" height="120" rx="6" fill="#fff"/>
+            <path d="M-12 66 100 4l112 62Z" fill="#073B5A"/>
+            <rect x="120" y="86" width="56" height="94" rx="3" fill="#073B5A" opacity=".9"/>
+            <rect x="22" y="92" width="72" height="52" rx="4" fill="#bfe0ee"/>
+            <path d="M58 92v52M22 118h72" stroke="#fff" stroke-width="3"/>
+          </g>
+          <g transform="translate(278 238)" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M0-30 36-16v26c0 24-16 40-36 48-20-8-36-24-36-48v-26Z" fill="#149447"/>
+            <path d="m-14 6 10 10 20-22"/>
+          </g>
+        </svg>
+        <span class="slot-tag">Imagen provisoria · reemplazar por foto real</span>
+      </div>
+      <div class="float-card">
+        <span class="float-card__ic"><svg class="i"><use href="#i-wa"/></svg></span>
+        <div><b>Respuesta rápida por WhatsApp</b><span><i class="dot"></i>Cotiza sin compromiso</span></div>
+      </div>
+    </div>
+  </div>
+  <svg class="hero__wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50C240 90 420 10 720 40s520 50 720 10v40H0Z" fill="#75D52B" opacity=".28"/><path d="M0 66C260 90 480 30 760 56s460 22 680-6v40H0Z" fill="#149447" opacity=".22"/></svg>
+</section>
+
+<!-- ===== BANDA DE CONFIANZA ===== -->
+<section class="trust" id="confianza" data-8b-section="trust" aria-label="Beneficios de CAPEST">
+  <div class="wrap">
+    <div class="trust__card reveal">
+      <div class="trust__item"><span class="ic-circle"><svg class="i"><use href="#i-homeshield"/></svg></span><b>Hogares más seguros</b></div>
+      <div class="trust__item"><span class="ic-circle"><svg class="i"><use href="#i-building"/></svg></span><b>Empresas más productivas</b></div>
+      <div class="trust__item"><span class="ic-circle"><svg class="i"><use href="#i-person"/></svg></span><b>Personal capacitado</b></div>
+      <div class="trust__item"><span class="ic-circle"><svg class="i"><use href="#i-leaf"/></svg></span><b>Entornos más saludables</b></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PLAGAS ===== -->
+<section class="sheet bg-white" id="plagas" data-8b-section="pests" aria-labelledby="plagas-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Plagas que controlamos</span>
+      <h2 id="plagas-title">Controlamos las plagas que amenazan tu espacio</h2>
+      <p class="lead">Aplicamos tratamientos profesionales según el tipo de plaga, las características del lugar y el nivel de infestación.</p>
+    </div>
+    <div class="grid c3">
+      <!-- Los textos de riesgo son generales y editables; CAPEST debe validarlos antes de publicar. -->
+      <article class="card pest reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-spider"/></svg></span><h3>Arañas</h3><p>Se instalan en rincones, techos, bodegas y jardines. Su presencia genera inseguridad en el hogar y los espacios de trabajo.</p><a class="link-arrow" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas. El problema que tengo es: arañas." href="https://wa.me/56968317150" target="_blank" rel="noopener">Consultar tratamiento <svg class="i"><use href="#i-arrow"/></svg></a></article>
+      <article class="card pest reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-mosquito"/></svg></span><h3>Zancudos</h3><p>Se concentran en patios, jardines y zonas húmedas. Sus picaduras son una molestia constante, sobre todo en temporada cálida.</p><a class="link-arrow" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas. El problema que tengo es: zancudos." href="https://wa.me/56968317150" target="_blank" rel="noopener">Consultar tratamiento <svg class="i"><use href="#i-arrow"/></svg></a></article>
+      <article class="card pest reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-fly"/></svg></span><h3>Moscas</h3><p>Aparecen donde hay alimentos o residuos. Afectan la higiene de cocinas, restaurantes y locales comerciales.</p><a class="link-arrow" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas. El problema que tengo es: moscas." href="https://wa.me/56968317150" target="_blank" rel="noopener">Consultar tratamiento <svg class="i"><use href="#i-arrow"/></svg></a></article>
+      <article class="card pest reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-flea"/></svg></span><h3>Pulgas</h3><p>Suelen llegar con las mascotas y se esconden en alfombras, camas y tapices. Se reproducen rápido si no se tratan a tiempo.</p><a class="link-arrow" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas. El problema que tengo es: pulgas." href="https://wa.me/56968317150" target="_blank" rel="noopener">Consultar tratamiento <svg class="i"><use href="#i-arrow"/></svg></a></article>
+      <article class="card pest reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-tick"/></svg></span><h3>Garrapatas</h3><p>Se alojan en jardines, perreras y zonas donde viven mascotas. Conviene actuar en el espacio y en su entorno.</p><a class="link-arrow" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas. El problema que tengo es: garrapatas." href="https://wa.me/56968317150" target="_blank" rel="noopener">Consultar tratamiento <svg class="i"><use href="#i-arrow"/></svg></a></article>
+      <article class="card pest reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-ant"/></svg></span><h3>Hormigas</h3><p>Forman rutas hacia la cocina y las bodegas en busca de alimento. Si no se interviene el origen, vuelven.</p><a class="link-arrow" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas. El problema que tengo es: hormigas." href="https://wa.me/56968317150" target="_blank" rel="noopener">Consultar tratamiento <svg class="i"><use href="#i-arrow"/></svg></a></article>
+      <article class="card pest reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-roach"/></svg></span><h3>Cucarachas</h3><p>Prefieren lugares cálidos, húmedos y poco visibles: cocinas, baños, bodegas y ductos. Requieren un tratamiento sostenido.</p><a class="link-arrow" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas. El problema que tengo es: cucarachas." href="https://wa.me/56968317150" target="_blank" rel="noopener">Consultar tratamiento <svg class="i"><use href="#i-arrow"/></svg></a></article>
+      <article class="card pest reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-rodent"/></svg></span><h3>Roedores</h3><p>Buscan refugio y alimento en viviendas, bodegas y locales. Pueden dañar instalaciones y productos almacenados.</p><a class="link-arrow" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas. El problema que tengo es: roedores." href="https://wa.me/56968317150" target="_blank" rel="noopener">Consultar tratamiento <svg class="i"><use href="#i-arrow"/></svg></a></article>
+      <article class="card pest reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-magnify"/></svg></span><h3>Otras plagas</h3><p>Si tu problema no está en la lista, cuéntanos qué observas y evaluamos el espacio para orientarte.</p><a class="link-arrow" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas. Tengo otro tipo de plaga." href="https://wa.me/56968317150" target="_blank" rel="noopener">Consultar tratamiento <svg class="i"><use href="#i-arrow"/></svg></a></article>
+    </div>
+    <p class="pests-note"><span class="hand">Prevenir hoy evita problemas mayores mañana.</span></p>
+  </div>
+</section>
+
+<!-- ===== HOGARES Y EMPRESAS ===== -->
+<section class="sheet bg-mist" id="soluciones" data-8b-section="solutions" aria-labelledby="soluciones-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Soluciones</span>
+      <h2 id="soluciones-title">Control profesional para hogares y empresas</h2>
+    </div>
+    <div class="split">
+      <article class="big big--home reveal" id="hogares">
+        <span class="ic-circle"><svg class="i"><use href="#i-homeshield"/></svg></span>
+        <h3>Protección para tu hogar</h3>
+        <p>Tratamientos diseñados para proteger a tu familia, tus mascotas y cada espacio de tu vivienda.</p>
+        <ul>
+          <li><svg class="i"><use href="#i-check"/></svg>Casas y departamentos</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Jardines y exteriores</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Control preventivo</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Tratamientos contra infestaciones</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Seguimiento programado</li>
+        </ul>
+        <span class="hand">Tu tranquilidad es nuestra prioridad</span>
+        <a class="btn btn-green" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas para mi hogar." href="https://wa.me/56968317150" target="_blank" rel="noopener">Solicitar servicio para mi hogar</a>
+      </article>
+      <article class="big big--biz reveal" id="empresas">
+        <svg class="curve" viewBox="0 0 220 160" aria-hidden="true"><path d="M0 150C40 60 120 20 220 30v130Z" fill="#149447" opacity=".55"/><path d="M60 160C90 100 150 70 220 78v82Z" fill="#75D52B" opacity=".5"/></svg>
+        <span class="ic-circle" style="background:var(--lime);color:var(--navy)"><svg class="i"><use href="#i-building"/></svg></span>
+        <h3>Control profesional para empresas</h3>
+        <p>Planes de control y seguimiento para mantener instalaciones seguras, higiénicas y operativas. Protege a tu hogar y a tus trabajadores.</p>
+        <ul>
+          <li><svg class="i"><use href="#i-check"/></svg>Oficinas</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Restaurantes</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Bodegas</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Locales comerciales</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Comunidades y edificios</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Instalaciones productivas</li>
+        </ul>
+        <a class="btn btn-lime" data-wa data-wa-msg="Hola, necesito cotizar un plan de control de plagas para mi empresa." href="https://wa.me/56968317150" target="_blank" rel="noopener">Cotizar plan para empresa</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SERVICIOS ===== -->
+<section class="sheet bg-white" id="servicios" data-8b-section="services" aria-labelledby="servicios-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Servicios</span>
+      <h2 id="servicios-title">Todo lo que necesitas para un espacio libre de plagas</h2>
+      <p class="lead">Ambientes más sanos, seguros y libres de plagas, con el servicio que corresponde a cada situación.</p>
+    </div>
+    <div class="grid c4" id="svc-grid">
+      <article class="card svc reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-spider"/></svg></span><h3>Control de insectos</h3><p>Tratamiento según la especie y el lugar afectado.</p><a class="link-arrow" data-wa data-wa-msg="Hola, quiero información sobre el servicio de control de insectos." href="https://wa.me/56968317150" target="_blank" rel="noopener">Pedir información <svg class="i"><use href="#i-arrow"/></svg></a></article>
+      <article class="card svc reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-spray"/></svg></span><h3>Desinsectación</h3><p>Aplicación profesional para eliminar infestaciones activas.</p><a class="link-arrow" data-wa data-wa-msg="Hola, quiero información sobre el servicio de desinsectación." href="https://wa.me/56968317150" target="_blank" rel="noopener">Pedir información <svg class="i"><use href="#i-arrow"/></svg></a></article>
+      <article class="card svc reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-sparkle"/></svg></span><h3>Sanitización de espacios</h3><p>Higiene de ambientes en hogares, oficinas y comercios.</p><a class="link-arrow" data-wa data-wa-msg="Hola, quiero información sobre sanitización de espacios." href="https://wa.me/56968317150" target="_blank" rel="noopener">Pedir información <svg class="i"><use href="#i-arrow"/></svg></a></article>
+      <article class="card svc reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-shield"/></svg></span><h3>Control preventivo</h3><p>Medidas periódicas para que las plagas no vuelvan a instalarse.</p><a class="link-arrow" data-wa data-wa-msg="Hola, quiero información sobre el control preventivo de plagas." href="https://wa.me/56968317150" target="_blank" rel="noopener">Pedir información <svg class="i"><use href="#i-arrow"/></svg></a></article>
+      <article class="card svc reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-clip"/></svg></span><h3>Inspección y diagnóstico</h3><p>Evaluamos el espacio para definir el tratamiento adecuado.</p><a class="link-arrow" data-wa data-wa-msg="Hola, quiero solicitar una inspección y diagnóstico por plagas." href="https://wa.me/56968317150" target="_blank" rel="noopener">Pedir información <svg class="i"><use href="#i-arrow"/></svg></a></article>
+      <article class="card svc reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-building"/></svg></span><h3>Programas para empresas</h3><p>Planes de control y seguimiento para instalaciones comerciales.</p><a class="link-arrow" data-wa data-wa-msg="Hola, quiero información sobre los programas de control de plagas para empresas." href="https://wa.me/56968317150" target="_blank" rel="noopener">Pedir información <svg class="i"><use href="#i-arrow"/></svg></a></article>
+      <article class="card svc reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-cal"/></svg></span><h3>Servicios mensuales</h3><p>Visitas programadas cada mes, con seguimiento continuo.</p><a class="link-arrow" data-wa data-wa-msg="Hola, quiero información sobre el servicio mensual de control de plagas." href="https://wa.me/56968317150" target="_blank" rel="noopener">Pedir información <svg class="i"><use href="#i-arrow"/></svg></a></article>
+      <article class="card svc reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-repeat"/></svg></span><h3>Servicios trimestrales</h3><p>Visitas programadas cada tres meses para mantener el control.</p><a class="link-arrow" data-wa data-wa-msg="Hola, quiero información sobre el servicio trimestral de control de plagas." href="https://wa.me/56968317150" target="_blank" rel="noopener">Pedir información <svg class="i"><use href="#i-arrow"/></svg></a></article>
+    </div>
+    <!-- Servicios adicionales (desratización, desinfección, etc.): se muestran solo si CAPEST_CONFIG.extraServices tiene contenido confirmado. -->
+  </div>
+</section>
+
+<!-- ===== CÓMO FUNCIONA ===== -->
+<section class="sheet band-dark" id="como-funciona" data-8b-section="process" aria-labelledby="proceso-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Cómo funciona</span>
+      <h2 id="proceso-title">De tu consulta al seguimiento, en cuatro pasos</h2>
+    </div>
+    <ol class="steps">
+      <li class="step reveal"><h3>Cuéntanos el problema</h3><p>Escríbenos por WhatsApp con tu comuna y la plaga que te preocupa. Puedes enviar fotos.</p></li>
+      <li class="step reveal"><h3>Evaluamos el espacio</h3><p>Revisamos el lugar para entender el origen y el alcance de la infestación.</p></li>
+      <li class="step reveal"><h3>Aplicamos el tratamiento adecuado</h3><p>Elegimos el método según la plaga y las características del lugar.</p></li>
+      <li class="step reveal"><h3>Realizamos seguimiento y prevención</h3><p>Programamos controles para evitar que el problema vuelva.</p></li>
+    </ol>
+    <div class="factors reveal">
+      <p><b>El tratamiento depende de cada caso.</b> Lo definimos según:</p>
+      <ul><li>Tipo de plaga</li><li>Tamaño del lugar</li><li>Nivel de infestación</li><li>Frecuencia requerida</li></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PLANES ===== -->
+<section class="sheet bg-mist" id="planes" data-8b-section="plans" aria-labelledby="planes-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Planes de servicio</span>
+      <h2 id="planes-title">Protección continua para tu espacio</h2>
+      <p class="lead">Elige un servicio puntual o un plan programado. Te cotizamos según el lugar y la plaga.</p>
+    </div>
+    <div class="grid c3" id="plans">
+      <article class="card plan reveal" data-plan="puntual">
+        <span class="ic-circle ic-soft"><svg class="i"><use href="#i-spray"/></svg></span>
+        <h3>Servicio puntual</h3>
+        <p>Para resolver un problema específico.</p>
+        <ul>
+          <li><svg class="i"><use href="#i-check"/></svg>Evaluación del espacio</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Tratamiento según la plaga y el nivel de infestación</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Recomendaciones de prevención</li>
+        </ul>
+        <div class="price" data-price="puntual">Precio por confirmar</div>
+        <a class="btn btn-green" data-wa data-wa-msg="Hola, quiero cotizar un servicio puntual de control de plagas." href="https://wa.me/56968317150" target="_blank" rel="noopener">Solicitar cotización</a>
+      </article>
+      <article class="card plan reveal" data-plan="mensual">
+        <span class="ic-circle ic-soft"><svg class="i"><use href="#i-cal"/></svg></span>
+        <h3>Plan mensual</h3>
+        <p>Para espacios con mayor exposición a plagas.</p>
+        <ul>
+          <li><svg class="i"><use href="#i-check"/></svg>Visitas programadas cada mes</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Seguimiento continuo del espacio</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Atención para hogares y empresas</li>
+        </ul>
+        <div class="price" data-price="mensual">Precio por confirmar</div>
+        <a class="btn btn-green" data-wa data-wa-msg="Hola, quiero cotizar un plan mensual de control de plagas." href="https://wa.me/56968317150" target="_blank" rel="noopener">Solicitar cotización</a>
+      </article>
+      <article class="card plan reveal" data-plan="trimestral">
+        <span class="ic-circle ic-soft"><svg class="i"><use href="#i-repeat"/></svg></span>
+        <h3>Plan trimestral</h3>
+        <p>Para mantener el control de forma preventiva.</p>
+        <ul>
+          <li><svg class="i"><use href="#i-check"/></svg>Visitas programadas cada tres meses</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Control preventivo periódico</li>
+          <li><svg class="i"><use href="#i-check"/></svg>Atención para hogares y empresas</li>
+        </ul>
+        <div class="price" data-price="trimestral">Precio por confirmar</div>
+        <a class="btn btn-green" data-wa data-wa-msg="Hola, quiero cotizar un plan trimestral de control de plagas." href="https://wa.me/56968317150" target="_blank" rel="noopener">Solicitar cotización</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== POR QUÉ CAPEST ===== -->
+<section class="sheet bg-white" id="nosotros" data-8b-section="why" aria-labelledby="nosotros-title">
+  <div class="wrap why">
+    <div class="reveal">
+      <div class="sec-head" style="margin-bottom:28px">
+        <span class="eyebrow">Por qué elegir CAPEST</span>
+        <h2 id="nosotros-title">Un servicio profesional, cercano y responsable</h2>
+        <p class="lead">Ambientes más sanos, seguros y libres de plagas, con comunicación directa en cada etapa.</p>
+      </div>
+      <ul class="why__list">
+        <li><span class="ic-circle"><svg class="i"><use href="#i-shield"/></svg></span>Empresa autorizada por la SEREMI de Salud.</li>
+        <li><span class="ic-circle"><svg class="i"><use href="#i-person"/></svg></span>Personal capacitado.</li>
+        <li><span class="ic-circle"><svg class="i"><use href="#i-homeshield"/></svg></span>Atención para hogares y empresas.</li>
+        <li><span class="ic-circle"><svg class="i"><use href="#i-clip"/></svg></span>Tratamientos adaptados a cada situación.</li>
+        <li><span class="ic-circle"><svg class="i"><use href="#i-cal"/></svg></span>Servicios programados mensuales y trimestrales.</li>
+        <li><span class="ic-circle"><svg class="i"><use href="#i-wa"/></svg></span>Comunicación directa por WhatsApp.</li>
+        <li><span class="ic-circle"><svg class="i"><use href="#i-leaf"/></svg></span>Compromiso con ambientes más sanos y seguros.</li>
+      </ul>
+    </div>
+    <aside class="facts reveal" aria-labelledby="facts-title">
+      <h3 id="facts-title">Datos de la empresa</h3>
+      <dl style="margin:0">
+        <div class="fact"><dt>Resolución sanitaria</dt><dd data-var="resolution"></dd></div>
+        <div class="fact"><dt>Certificaciones</dt><dd data-var="certifications"></dd></div>
+        <div class="fact"><dt>Años de experiencia</dt><dd data-var="experience"></dd></div>
+        <div class="fact"><dt>Cobertura geográfica</dt><dd data-var="coverage"></dd></div>
+        <div class="fact"><dt>Garantías del servicio</dt><dd data-var="guarantees"></dd></div>
+      </dl>
+    </aside>
+  </div>
+</section>
+
+<!-- ===== CTA INTERMEDIO ===== -->
+<section class="sheet band-dark cta" id="cta" data-8b-section="cta" aria-labelledby="cta-title" style="padding-bottom:88px">
+  <svg class="waves" viewBox="0 0 620 300" aria-hidden="true"><path d="M0 300C60 150 220 60 620 80v220Z" fill="#149447"/><path d="M140 300c60-90 200-150 480-140v140Z" fill="#087A39"/><path d="M300 300c60-50 170-80 320-72v72Z" fill="#75D52B"/></svg>
+  <div class="wrap">
+    <div class="cta__in reveal">
+      <h2 id="cta-title">No esperes a que el problema aumente</h2>
+      <p class="lead">Solicita una evaluación y recibe orientación para elegir el tratamiento más adecuado para tu hogar o empresa.</p>
+      <div><a class="btn btn-lime" data-wa data-wa-msg="Hola, quiero hablar con un especialista en control de plagas." href="https://wa.me/56968317150" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Hablar con un especialista</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIOS (oculta hasta tener reseñas reales) ===== -->
+<section class="sheet bg-white" id="testimonios" data-8b-section="testimonials" aria-labelledby="testimonios-title" hidden>
+  <div class="wrap">
+    <div class="sec-head"><span class="eyebrow">Opiniones</span><h2 id="testimonios-title">Lo que dicen nuestros clientes</h2></div>
+    <div class="grid c3" id="testimonials-list"></div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="sheet bg-mist" id="preguntas-frecuentes" data-8b-section="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Preguntas frecuentes</span>
+      <h2 id="faq-title">Resolvemos tus dudas antes de la visita</h2>
+    </div>
+    <div class="faq" id="faq-list">
+      <details><summary>¿Qué debo hacer antes del tratamiento?</summary><div class="ans"><p data-var-ans="before"></p></div></details>
+      <details><summary>¿Cuánto dura una aplicación?</summary><div class="ans"><p data-var-ans="duration"></p></div></details>
+      <details><summary>¿Cuándo puedo volver a entrar al espacio?</summary><div class="ans"><p data-var-ans="reentry"></p></div></details>
+      <details><summary>¿Los tratamientos son compatibles con hogares con niños o mascotas?</summary><div class="ans"><p data-var-ans="kidsPets"></p></div></details>
+      <details><summary>¿Cuántas aplicaciones pueden ser necesarias?</summary><div class="ans"><p>Depende del tipo de plaga, el tamaño del lugar, el nivel de infestación y la frecuencia requerida. Lo definimos después de evaluar el espacio.</p></div></details>
+      <details><summary>¿Atienden hogares y empresas?</summary><div class="ans"><p>Sí. Atendemos casas y departamentos, oficinas, restaurantes, bodegas, locales comerciales, comunidades, edificios e instalaciones productivas.</p></div></details>
+      <details><summary>¿Ofrecen servicios mensuales o trimestrales?</summary><div class="ans"><p>Sí. Además del servicio puntual, ofrecemos planes mensuales y trimestrales con seguimiento programado.</p></div></details>
+      <details><summary>¿En qué comunas trabajan?</summary><div class="ans"><p data-var-ans="communes"></p></div></details>
+      <details><summary>¿Cómo puedo solicitar una cotización?</summary><div class="ans"><p>Escríbenos por WhatsApp al <b>+56 9 6831 7150</b> o completa el formulario de contacto. Cuéntanos la comuna, el tipo de propiedad y la plaga que tienes.</p><div><a class="btn btn-lime btn-sm" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas." href="https://wa.me/56968317150" target="_blank" rel="noopener">Cotizar por WhatsApp</a></div></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACTO ===== -->
+<section class="sheet bg-white" id="contacto" data-8b-section="contact" aria-labelledby="contacto-title">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Contacto</span>
+      <h2 id="contacto-title">Solicita tu evaluación o cotización</h2>
+      <p class="lead">Cuéntanos qué necesitas y te respondemos por el medio que prefieras.</p>
+    </div>
+    <div class="contact">
+      <div class="formcard reveal">
+        <form id="contact-form" class="form" novalidate data-msg-ok="Recibimos tu solicitud. Para una respuesta más rápida, continúa la conversación por WhatsApp." data-msg-error="No pudimos enviar el formulario. Escríbenos directamente por WhatsApp y te atendemos.">
+          <div class="field" data-f="name"><label for="f-name">Nombre</label><input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="e-name"><span class="err" id="e-name" role="alert">Escribe tu nombre.</span></div>
+          <div class="field" data-f="phone"><label for="f-phone">Teléfono</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+56 9 1234 5678" required aria-describedby="e-phone"><span class="err" id="e-phone" role="alert">Ingresa un teléfono válido, por ejemplo +56 9 1234 5678.</span></div>
+          <div class="field" data-f="email"><label for="f-email">Correo <small>(opcional)</small></label><input id="f-email" name="email" type="email" autocomplete="email" aria-describedby="e-email"><span class="err" id="e-email" role="alert">Revisa el formato del correo.</span></div>
+          <div class="field" data-f="propertyType"><label for="f-prop">Tipo de propiedad</label>
+            <select id="f-prop" name="propertyType" required aria-describedby="e-prop"><option value="">Selecciona una opción</option><option value="hogar">Hogar</option><option value="empresa">Empresa</option><option value="oficina">Oficina</option><option value="comercio">Comercio</option><option value="otro">Otro</option></select><span class="err" id="e-prop" role="alert">Selecciona el tipo de propiedad.</span></div>
+          <div class="field" data-f="pestType"><label for="f-pest">Tipo de plaga</label>
+            <select id="f-pest" name="pestType" required aria-describedby="e-pest"><option value="">Selecciona una opción</option><option>Arañas</option><option>Zancudos</option><option>Moscas</option><option>Pulgas</option><option>Garrapatas</option><option>Hormigas</option><option>Cucarachas</option><option>Roedores</option><option>Otra plaga</option><option>No estoy seguro</option></select><span class="err" id="e-pest" role="alert">Selecciona el tipo de plaga.</span></div>
+          <div class="field" data-f="commune"><label for="f-commune">Comuna</label><input id="f-commune" name="commune" type="text" autocomplete="address-level2" required aria-describedby="e-commune"><span class="err" id="e-commune" role="alert">Indica tu comuna.</span></div>
+          <div class="field full" data-f="serviceFrequency"><label for="f-freq">Frecuencia del servicio</label>
+            <select id="f-freq" name="serviceFrequency"><option value="puntual">Servicio puntual</option><option value="mensual">Plan mensual</option><option value="trimestral">Plan trimestral</option></select></div>
+          <div class="field full"><label for="f-msg">Mensaje <small>(opcional)</small></label><textarea id="f-msg" name="message"></textarea></div>
+          <div class="field full" id="upload-field" hidden><label for="f-photos">Fotografías <small>(opcional)</small></label><input id="f-photos" name="photos" type="file" accept="image/*" multiple></div>
+          <div class="hp" aria-hidden="true"><label for="f-web">No completar este campo</label><input id="f-web" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+          <div class="full" style="display:grid;gap:12px">
+            <button class="btn btn-green btn-block" type="submit">Enviar solicitud</button>
+            <div class="form__status" id="form-status" role="status" aria-live="polite" tabindex="-1"></div>
+          </div>
+        </form>
+      </div>
+      <aside class="info reveal" aria-labelledby="info-title">
+        <h3 id="info-title">Habla directo con CAPEST</h3>
+        <ul>
+          <li><span class="ic-circle"><svg class="i"><use href="#i-wa"/></svg></span><div><small>WhatsApp</small><a href="https://wa.me/56968317150" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas." target="_blank" rel="noopener">+56 9 6831 7150</a></div></li>
+          <li><span class="ic-circle"><svg class="i"><use href="#i-clock"/></svg></span><div><small>Horarios de atención</small><span data-var="hours"></span></div></li>
+          <li><span class="ic-circle"><svg class="i"><use href="#i-mail"/></svg></span><div><small>Correo</small><span data-var="email"></span></div></li>
+          <li><span class="ic-circle"><svg class="i"><use href="#i-pin"/></svg></span><div><small>Área de cobertura</small><span data-var="coverage"></span></div></li>
+        </ul>
+        <a class="btn btn-lime btn-block" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas." href="https://wa.me/56968317150" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>Escribir por WhatsApp</a>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer" id="footer" data-8b-section="footer">
+  <div class="wrap">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a class="logo" href="#inicio" aria-label="CAPEST, ir al inicio"><svg viewBox="0 0 150 34" role="img" aria-label="CAPEST"><text x="0" y="26" font-family="Plus Jakarta Sans,Montserrat,Arial,sans-serif" font-weight="800" font-size="28" letter-spacing="1" fill="#fff">CAP<tspan fill="#75D52B">EST</tspan></text></svg></a>
+        <p>Control profesional de plagas y sanitización para hogares y empresas. Ambientes más sanos, seguros y libres de plagas.</p>
+        <span class="hand" style="color:var(--lime)">Tu tranquilidad es nuestra prioridad</span>
+        <div class="social" id="social" hidden></div>
+      </div>
+      <nav aria-label="Navegación del pie"><h3>Navegación</h3><ul>
+        <li><a href="#inicio">Inicio</a></li><li><a href="#hogares">Hogares</a></li><li><a href="#empresas">Empresas</a></li><li><a href="#planes">Planes</a></li><li><a href="#nosotros">Nosotros</a></li><li><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li><li><a href="#contacto">Contacto</a></li></ul></nav>
+      <nav aria-label="Servicios"><h3>Servicios</h3><ul>
+        <li><a href="#servicios">Control de insectos</a></li><li><a href="#servicios">Desinsectación</a></li><li><a href="#servicios">Sanitización de espacios</a></li><li><a href="#servicios">Control preventivo</a></li><li><a href="#planes">Planes mensuales y trimestrales</a></li></ul></nav>
+      <div><h3>Contacto</h3><ul style="gap:10px">
+        <li>WhatsApp: <a href="https://wa.me/56968317150" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas." target="_blank" rel="noopener">+56 9 6831 7150</a></li>
+        <li>Correo: <span data-var="email"></span></li>
+        <li>Dirección: <span data-var="address"></span></li>
+        <li>Horarios: <span data-var="hours"></span></li>
+        <li>Resolución sanitaria: <span data-var="resolution"></span></li></ul></div>
+    </div>
+    <div class="footer__legal">
+      <span>© <span id="year"></span> CAPEST. Todos los derechos reservados.</span>
+      <span><a href="#privacidad" data-dialog="dlg-privacidad">Política de privacidad</a> · <a href="#terminos" data-dialog="dlg-terminos">Términos del servicio</a></span>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas." href="https://wa.me/56968317150" target="_blank" rel="noopener" aria-label="Escribir a CAPEST por WhatsApp"><svg class="i"><use href="#i-wa"/></svg></a>
+<div class="mbar" role="group" aria-label="Contacto rápido">
+  <a class="btn btn-line btn-sm" href="tel:+56968317150"><svg class="i"><use href="#i-phone"/></svg>Llamar</a>
+  <a class="btn btn-lime btn-sm" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas." href="https://wa.me/56968317150" target="_blank" rel="noopener"><svg class="i"><use href="#i-wa"/></svg>WhatsApp</a>
+</div>
+
+<dialog id="dlg-privacidad" aria-labelledby="t-priv"><h2 id="t-priv">Política de privacidad</h2><p class="pending">Contenido pendiente: CAPEST debe entregar su política de privacidad (tratamiento de datos personales, Ley 19.628 / Ley 21.719) antes de publicar.</p><button class="btn btn-green btn-sm" data-close>Cerrar</button></dialog>
+<dialog id="dlg-terminos" aria-labelledby="t-term"><h2 id="t-term">Términos del servicio</h2><p class="pending">Contenido pendiente: CAPEST debe entregar sus términos y condiciones del servicio antes de publicar.</p><button class="btn btn-green btn-sm" data-close>Cerrar</button></dialog>
+
+<script>
+/* ========= CONFIGURACIÓN EDITABLE =========
+   Todo valor vacío ("") se muestra como "Por confirmar" y no se inventa nada. Completar solo con datos confirmados por CAPEST. */
+var CAPEST_CONFIG = {
+  whatsapp: "56968317150",
+  phoneDisplay: "+56 9 6831 7150",
+  city: "Santiago",
+  communes: "",            // ej: "Santiago, Providencia, Las Condes"
+  coverage: "",            // área de cobertura / regiones atendidas
+  hours: "",
+  email: "",
+  address: "",
+  resolution: "",          // número de resolución sanitaria
+  certifications: "",
+  experience: "",
+  guarantees: "",
+  prices: { puntual: "", mensual: "", trimestral: "" },
+  recommendedPlan: "",     // "puntual" | "mensual" | "trimestral" cuando CAPEST lo defina
+  social: [],              // [{ label: "Instagram", url: "https://..." }] solo redes reales
+  testimonials: [],        // [{ name, service, commune, text, rating? }] solo reseñas reales
+  extraServices: [],       // [{ name, text, icon }] solo servicios confirmados (ej. desratización)
+  faq: { before: "", duration: "", reentry: "", kidsPets: "", communes: "" }, // respuestas confirmadas por CAPEST
+  faqConfirmed: false,     // true habilita FAQPage JSON-LD con las respuestas confirmadas
+  webhookUrl: "",          // endpoint n8n / CRM que recibe el JSON del formulario
+  uploadEnabled: false,    // true solo si el backend acepta fotografías
+  turnstileSiteKey: "",    // opcional: captcha anti-spam
+  gaId: "",                // ej: "G-XXXXXXXXXX"
+  metaPixelId: ""
+};
+(function(){
+  var C = CAPEST_CONFIG, d = document, root = d.documentElement;
+  function esc(s){var e=d.createElement('div');e.textContent=s;return e.innerHTML}
+  function waLink(msg){return 'https://wa.me/'+C.whatsapp+'?text='+encodeURIComponent(msg)}
+  function pendingEl(){var s=d.createElement('span');s.className='pending';s.textContent='Por confirmar';return s}
+
+  /* Enlaces de WhatsApp con mensaje */
+  d.querySelectorAll('[data-wa]').forEach(function(a){
+    a.href = waLink(a.getAttribute('data-wa-msg')||'Hola, necesito información sobre un servicio de control de plagas.');
+    a.addEventListener('click',function(){track('whatsapp_click',{label:a.textContent.trim().slice(0,60)})});
+  });
+
+  /* Variables editables */
+  d.querySelectorAll('[data-var]').forEach(function(el){
+    var v = C[el.getAttribute('data-var')];
+    if(v){ el.textContent = v; } else { el.textContent=''; el.appendChild(pendingEl()); }
+    if(el.getAttribute('data-var')==='email' && v){ el.innerHTML='<a href="mailto:'+esc(v)+'">'+esc(v)+'</a>'; }
+  });
+  d.querySelectorAll('[data-var-ans]').forEach(function(el){
+    var v = C.faq[el.getAttribute('data-var-ans')];
+    if(v){ el.textContent=v; } else { el.appendChild(pendingEl()); el.appendChild(d.createTextNode(' CAPEST debe confirmar esta respuesta antes de publicar.')); }
+  });
+  d.querySelectorAll('[data-price]').forEach(function(el){ var v=C.prices[el.getAttribute('data-price')]; el.textContent = v || 'Precio por confirmar'; });
+  if(C.recommendedPlan){
+    var rec = d.querySelector('[data-plan="'+C.recommendedPlan+'"]');
+    if(rec){ rec.classList.add('plan--rec'); var t=d.createElement('span'); t.className='tag'; t.textContent='Recomendado'; rec.insertBefore(t,rec.firstChild); }
+  }
+  /* Redes sociales */
+  if(C.social.length){ var so=d.getElementById('social'); C.social.forEach(function(s){var a=d.createElement('a');a.href=s.url;a.textContent=s.label;a.target='_blank';a.rel='noopener noreferrer';so.appendChild(a)}); so.hidden=false; }
+  /* Testimonios reales */
+  if(C.testimonials.length){
+    var list=d.getElementById('testimonials-list');
+    C.testimonials.forEach(function(t){
+      var a=d.createElement('article'); a.className='card quote';
+      a.innerHTML=(t.rating?'<div aria-label="Calificación '+esc(String(t.rating))+' de 5">'+'★'.repeat(Math.round(t.rating))+'</div>':'')+'<blockquote>“'+esc(t.text)+'”</blockquote><footer><b>'+esc(t.name)+'</b><br>'+esc(t.service)+' · '+esc(t.commune)+'</footer>';
+      list.appendChild(a);
+    });
+    d.getElementById('testimonios').hidden=false;
+  }
+  /* Servicios adicionales confirmados */
+  if(C.extraServices.length){
+    var g=d.getElementById('svc-grid');
+    C.extraServices.forEach(function(s){var a=d.createElement('article');a.className='card svc';a.innerHTML='<h3>'+esc(s.name)+'</h3><p>'+esc(s.text)+'</p>';g.appendChild(a)});
+  }
+  /* FAQPage JSON-LD solo con respuestas confirmadas */
+  if(C.faqConfirmed){
+    var qs=[['¿Qué debo hacer antes del tratamiento?','before'],['¿Cuánto dura una aplicación?','duration'],['¿Cuándo puedo volver a entrar al espacio?','reentry'],['¿Los tratamientos son compatibles con hogares con niños o mascotas?','kidsPets'],['¿En qué comunas trabajan?','communes']].filter(function(q){return C.faq[q[1]]});
+    if(qs.length){var s=d.createElement('script');s.type='application/ld+json';s.textContent=JSON.stringify({'@context':'https://schema.org','@type':'FAQPage',mainEntity:qs.map(function(q){return{'@type':'Question',name:q[0],acceptedAnswer:{'@type':'Answer',text:C.faq[q[1]]}}})});d.head.appendChild(s)}
+  }
+  d.getElementById('year').textContent = new Date().getFullYear();
+  if(C.uploadEnabled) d.getElementById('upload-field').hidden=false;
+
+  /* Analytics (solo con IDs reales) */
+  window.dataLayer = window.dataLayer || [];
+  function track(name,params){
+    try{ if(C.gaId && window.gtag) window.gtag('event',name,params||{}); if(C.metaPixelId && window.fbq) window.fbq('trackCustom',name,params||{}); }catch(e){}
+  }
+  if(C.gaId){ var gs=d.createElement('script'); gs.async=true; gs.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(C.gaId); d.head.appendChild(gs); window.gtag=function(){window.dataLayer.push(arguments)}; window.gtag('js',new Date()); window.gtag('config',C.gaId); }
+  if(C.metaPixelId){ !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src='https://connect.facebook.net/en_US/fbevents.js';s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,d,'script'); window.fbq('init',C.metaPixelId); window.fbq('track','PageView'); }
+
+  /* Menú móvil */
+  var tg=d.querySelector('.nav__toggle'), menu=d.getElementById('menu');
+  function setMenu(open){ menu.hidden=!open; tg.setAttribute('aria-expanded',String(open)); tg.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú'); tg.querySelector('use').setAttribute('href',open?'#i-close':'#i-menu'); }
+  tg.addEventListener('click',function(){ setMenu(menu.hidden); });
+  menu.addEventListener('click',function(e){ if(e.target.closest('a')) setMenu(false); });
+  d.addEventListener('keydown',function(e){ if(e.key==='Escape' && !menu.hidden){ setMenu(false); tg.focus(); } });
+  window.addEventListener('resize',function(){ if(window.innerWidth>=1100) setMenu(false); });
+
+  /* Modales legales */
+  d.querySelectorAll('[data-dialog]').forEach(function(a){ a.addEventListener('click',function(e){ e.preventDefault(); var dl=d.getElementById(a.getAttribute('data-dialog')); if(dl.showModal) dl.showModal(); }); });
+  d.querySelectorAll('[data-close]').forEach(function(b){ b.addEventListener('click',function(){ b.closest('dialog').close(); }); });
+
+  /* Aparición suave (nunca deja contenido oculto) */
+  var items=d.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    root.classList.add('js-anim');
+    var io=new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); },{rootMargin:'0px 0px -8% 0px',threshold:.05});
+    items.forEach(function(el){ io.observe(el); });
+    setTimeout(function(){ items.forEach(function(el){ el.classList.add('in'); }); },2500);
+  }
+
+  /* Formulario: validación, anti-spam, JSON a webhook y respaldo por WhatsApp */
+  var form=d.getElementById('contact-form'), status=d.getElementById('form-status'), t0=Date.now();
+  function setErr(name,bad){ var f=form.querySelector('[data-f="'+name+'"]'); if(!f) return; f.classList.toggle('has-err',bad); var inp=f.querySelector('input,select'); inp.setAttribute('aria-invalid',bad?'true':'false'); }
+  function validate(){
+    var v=form.elements, bad=[], digits=v.phone.value.replace(/\D/g,'');
+    var rules={ name:v.name.value.trim().length<2, phone:digits.length<8||digits.length>12, email:!!v.email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.email.value), propertyType:!v.propertyType.value, pestType:!v.pestType.value, commune:v.commune.value.trim().length<2 };
+    Object.keys(rules).forEach(function(k){ setErr(k,rules[k]); if(rules[k]) bad.push(k); });
+    if(bad.length){ var first=form.querySelector('[data-f="'+bad[0]+'"] input, [data-f="'+bad[0]+'"] select'); first.focus(); }
+    return bad.length===0;
+  }
+  form.addEventListener('input',function(e){ var f=e.target.closest('[data-f]'); if(f && f.classList.contains('has-err')) { f.classList.remove('has-err'); e.target.setAttribute('aria-invalid','false'); } });
+  function payload(){ var v=form.elements; return { name:v.name.value.trim(), phone:v.phone.value.trim(), email:v.email.value.trim(), propertyType:v.propertyType.value, pestType:v.pestType.value, commune:v.commune.value.trim(), serviceFrequency:v.serviceFrequency.value, message:v.message.value.trim(), source:'website' }; }
+  function showStatus(kind,html){ status.className='form__status '+kind; status.innerHTML=html; status.focus(); }
+  function waMsg(p){ return 'Hola, necesito información sobre un servicio de control de plagas. Mi nombre es '+p.name+', estoy en '+p.commune+' y el problema que tengo es '+p.pestType+'.'; }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(form.elements.website.value) return;                 // honeypot
+    if(Date.now()-t0<3000){ showStatus('bad','Espera unos segundos antes de enviar el formulario.'); return; } // tiempo mínimo
+    if(!validate()) return;
+    var p=payload(), wa='<a class="btn btn-lime btn-sm" href="'+waLink(waMsg(p))+'" target="_blank" rel="noopener">Continuar por WhatsApp</a>';
+    track('lead_form_submit',{pest:p.pestType,property:p.propertyType});
+    if(C.webhookUrl){
+      fetch(C.webhookUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(p)})
+        .then(function(r){ if(!r.ok) throw new Error(r.status); showStatus('ok','<span>'+esc(form.getAttribute('data-msg-ok'))+'</span><div>'+wa+'</div>'); form.reset(); t0=Date.now(); })
+        .catch(function(){ showStatus('bad',esc(form.getAttribute('data-msg-error'))+'<div style="margin-top:10px">'+wa+'</div>'); });
+    } else {
+      showStatus('ok','<span>Tu solicitud está lista. Envíala por WhatsApp para recibir respuesta directa.</span><div>'+wa+'</div>');
+    }
+  });
+})();
+</script>
+</body>
+</html>
