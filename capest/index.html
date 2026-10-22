@@ -178,6 +178,7 @@ html.lenis,html.lenis body{height:auto}
 .pests__bar{display:none;height:4px;border-radius:4px;background:var(--line);overflow:hidden;margin-bottom:18px}
 .pests__bar i{display:block;height:100%;background:linear-gradient(90deg,var(--green),var(--lime));transform-origin:left;transform:scaleX(0)}
 .pests.is-h .pests__bar{display:block}
+.pests.is-h .pests__stage{position:sticky;top:84px}
 .pests.is-h .pests__hold{overflow:hidden;padding-block:14px;margin-block:-14px}
 .pests.is-h .pests__track{display:flex;gap:20px;width:max-content;padding-right:24px}
 .pests.is-h .pests__track .pest{width:340px;flex:none}
@@ -483,7 +484,7 @@ dialog .btn{margin-top:18px}
 
 <!-- ===== PLAGAS ===== -->
 <section class="sheet bg-white pests" id="plagas" data-8b-section="pests" aria-labelledby="plagas-title">
-  <div class="pests__stage">
+  <div class="pests__runway"><div class="pests__stage">
     <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Plagas que controlamos</span>
@@ -504,7 +505,7 @@ dialog .btn{margin-top:18px}
       <article class="card pest reveal"><span class="ic-circle ic-soft"><svg class="i"><use href="#i-magnify"/></svg></span><h3>Otras plagas</h3><p>Si tu problema no está en la lista, cuéntanos qué observas y evaluamos el espacio para orientarte.</p><a class="link-arrow" data-wa data-wa-msg="Hola, necesito información sobre un servicio de control de plagas. Tengo otro tipo de plaga." href="https://wa.me/56968317150" target="_blank" rel="noopener">Consultar tratamiento <svg class="i"><use href="#i-arrow"/></svg></a></article>
     </div></div></div>
     <div class="wrap pests__foot"><div class="pests__bar" aria-hidden="true"><i></i></div><p class="pests-note"><span class="hand">Prevenir hoy evita problemas mayores mañana.</span></p></div>
-  </div>
+  </div></div>
 </section>
 
 <!-- ===== HOGARES Y EMPRESAS ===== -->
@@ -962,14 +963,20 @@ var CAPEST_CONFIG = {
   });
   /* Plagas: en escritorio las tarjetas avanzan en horizontal mientras la sección queda fija */
   gsap.matchMedia().add('(min-width: 900px) and (min-height: 700px)',function(){
-    var sec=d.getElementById('plagas'), stage=sec.querySelector('.pests__stage'), track=sec.querySelector('.pests__track'), bar=sec.querySelector('.pests__bar i');
+    var sec=d.getElementById('plagas'), runway=sec.querySelector('.pests__runway'), stage=sec.querySelector('.pests__stage'), track=sec.querySelector('.pests__track'), bar=sec.querySelector('.pests__bar i'), D=0;
     sec.classList.add('is-h');
-    function dist(){
-      var left=track.getBoundingClientRect().left-gsap.getProperty(track,'x');
-      return Math.max(0,track.scrollWidth-(window.innerWidth-left));
+    /* Sin pin: el escenario usa position:sticky dentro de una pista alta; ScrollTrigger solo mueve las tarjetas */
+    function measure(){
+      runway.style.height='';
+      gsap.set(track,{x:0});
+      var left=track.getBoundingClientRect().left;
+      D=Math.max(0,Math.round(track.scrollWidth-(window.innerWidth-left)));
+      runway.style.height=(stage.offsetHeight+D)+'px';
     }
-    gsap.to(track,{x:function(){return -dist()},ease:'none',scrollTrigger:{trigger:stage,start:'top top+=84',end:function(){return '+='+dist()},pin:true,scrub:.6,anticipatePin:1,invalidateOnRefresh:true,onUpdate:function(s){bar.style.transform='scaleX('+s.progress+')'}}});
-    return function(){sec.classList.remove('is-h');bar.style.transform=''};
+    ScrollTrigger.addEventListener('refreshInit',measure);
+    measure();
+    gsap.to(track,{x:function(){return -D},ease:'none',scrollTrigger:{trigger:runway,start:'top top+=84',end:function(){return '+='+D},scrub:.6,invalidateOnRefresh:true,onUpdate:function(s){bar.style.transform='scaleX('+s.progress+')'}}});
+    return function(){ScrollTrigger.removeEventListener('refreshInit',measure);runway.style.height='';sec.classList.remove('is-h');bar.style.transform=''};
   });
   /* Pasos: cada tarjeta se apila sobre la anterior */
   var steps=gsap.utils.toArray('.step');
