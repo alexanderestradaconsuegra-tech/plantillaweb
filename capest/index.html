@@ -327,6 +327,23 @@ dialog .btn{margin-top:18px}
   .js-anim .reveal{opacity:1;transform:none}
 }
 
+/* Móvil: plagas en fila deslizable y servicios en 2 columnas (página más corta) */
+@media (max-width:899px){
+  .pests__track{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:-16px;padding:4px 16px 14px;scroll-padding-inline:16px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .pests__track::-webkit-scrollbar{display:none}
+  .pests__track .pest{flex:0 0 78%;max-width:320px;scroll-snap-align:start}
+  .pests__track .reveal{opacity:1;transform:none}
+}
+@media (max-width:599px){
+  #svc-grid{grid-template-columns:1fr 1fr;gap:12px}
+  #svc-grid .card{padding:16px;gap:8px}
+  #svc-grid .ic-circle{width:44px;height:44px}
+  #svc-grid .ic-circle .i{width:24px;height:24px}
+  #svc-grid h3{font-size:1rem}
+  #svc-grid p{font-size:.9rem}
+  #svc-grid .link-arrow{font-size:.88rem}
+}
+.info a{display:inline-block;padding:10px 0}
 /* >= 600 */
 @media (min-width:600px){
   .trust__card{grid-template-columns:repeat(4,1fr);padding:28px}
