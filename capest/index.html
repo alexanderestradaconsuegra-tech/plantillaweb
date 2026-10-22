@@ -247,16 +247,16 @@ html.lenis,html.lenis body{height:auto}
 /* CTA */
 .cta{position:relative;overflow:hidden;min-height:640px;display:flex;align-items:flex-end;padding-bottom:110px;background:var(--navy)}
 .cta__window{position:absolute;inset:0;z-index:0;overflow:hidden}
-.cta__img{width:100%;height:100%;object-fit:cover;object-position:80% 30%;display:block}
+.cta__img{width:100%;height:100%;object-fit:cover;object-position:60% 0;display:block}
 .cta__window::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,59,90,.1) 0%,rgba(7,59,90,.78) 48%,rgba(7,59,90,.97) 100%)}
 .cta .wrap{position:relative;z-index:2}
-.cta__in{display:grid;gap:22px;max-width:680px}
+.cta__in{display:grid;gap:22px;max-width:600px}
 .cta__in h2{font-size:clamp(2rem,6.4vw,3.6rem)}
 .cta__actions{display:flex;flex-wrap:wrap;gap:12px}
 .cta__wave{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:90px;z-index:1;pointer-events:none}
 @media (min-width:900px){
   .cta{align-items:center;min-height:620px;padding-bottom:130px}
-  .cta__window::after{background:linear-gradient(90deg,rgba(7,59,90,.96) 0%,rgba(7,59,90,.85) 38%,rgba(7,59,90,.15) 70%,rgba(7,59,90,0) 100%)}
+  .cta__window::after{background:linear-gradient(90deg,rgba(7,59,90,.96) 0%,rgba(7,59,90,.88) 30%,rgba(7,59,90,.2) 50%,rgba(7,59,90,0) 62%)}
   .cta__img{object-position:center}
 }
 
@@ -711,7 +711,7 @@ dialog .btn{margin-top:18px}
 <section class="sheet band-dark cta" id="cta" data-8b-section="cta" aria-labelledby="cta-title">
   <div class="cta__window" data-8b-placeholder="photo-cta">
     <!-- Reemplazar assets/cta.webp por la foto definitiva (16:9, mín. 1920x1080): técnico de CAPEST entregando una tablet a un cliente sonriente en la puerta de una vivienda moderna. -->
-    <img class="cta__img" src="assets/cta.webp" width="800" height="600" loading="lazy" alt="Técnico de CAPEST conversando con una persona en una vivienda">
+    <picture><source media="(min-width:900px)" srcset="assets/cta.webp" type="image/webp"><img class="cta__img" src="assets/cta-m.webp" width="900" height="1000" loading="lazy" alt="Técnico de CAPEST mostrando una tablet a una clienta en la entrada de una vivienda moderna"></picture>
   </div>
   <svg class="cta__wave" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 50C240 90 420 10 720 40s520 50 720 10v40H0Z" fill="#75D52B" opacity=".55"/><path d="M0 66C260 90 480 30 760 56s460 22 680-6v40H0Z" fill="#149447" opacity=".7"/></svg>
   <div class="wrap">
