@@ -212,3 +212,19 @@
     #hero .hero__chip .m-caption, #hero .hero__chip .m-caption-2 { font-size: 0.8125rem; }
   }
 }
+
+/* Tokens de shadcn que usan los componentes de /components/ui (text-foreground, border-border…) */
+:root {
+  --foreground: #0a0a0a;
+  --border: #e5e5e5;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground: #fafafa;
+    --border: rgba(255, 255, 255, 0.12);
+  }
+}
+@theme inline {
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+}
