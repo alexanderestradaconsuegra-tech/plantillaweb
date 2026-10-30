@@ -215,16 +215,55 @@
 
 /* Tokens de shadcn que usan los componentes de /components/ui (text-foreground, border-border…) */
 :root {
+  --background: #ffffff;
   --foreground: #0a0a0a;
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
   --border: #e5e5e5;
+  --ring: #a1a1aa;
 }
 @media (prefers-color-scheme: dark) {
   :root {
+    --background: #0a0a0a;
     --foreground: #fafafa;
+    --card: #111113;
+    --card-foreground: #fafafa;
+    --popover: #111113;
+    --popover-foreground: #fafafa;
+    --muted: #1c1c1f;
+    --muted-foreground: #a1a1aa;
     --border: rgba(255, 255, 255, 0.12);
+    --ring: #71717a;
   }
 }
 @theme inline {
+  --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
   --color-border: var(--border);
+  --color-ring: var(--ring);
+}
+
+/* Tema Autix para los componentes de /components/ui (claro, azul petróleo + cian) */
+.theme-autix {
+  color-scheme: light;
+  --background: #eef7fb;
+  --foreground: #0b1c25;
+  --card: #ffffff;
+  --card-foreground: #0b1c25;
+  --popover: #ffffff;
+  --popover-foreground: #0b1c25;
+  --muted: #e3f0f6;
+  --muted-foreground: #5b7482;
+  --border: #d5e6ee;
+  --ring: #2fc7e4;
 }
